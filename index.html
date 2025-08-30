@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolGep – Trituración forestal y de piedra | Maquinaria PTO e hidráulica</title>
+    <meta name="description" content="VolGep importa y distribuye maquinaria de alto rendimiento para agro, forestación y mantenimiento de espacios productivos y públicos. Trituradoras forestales y de piedra (PTO e hidráulicas), repuestos y servicio postventa." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://TU_DOMINIO/" />
+    <!-- Tipografías: Display + Texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="VolGep – Maquinaria profesional para agro y forestación" />
+    <meta property="og:description" content="Trituradoras forestales y de piedra (PTO e hidráulicas). Experiencia de campo, logística eficiente y fuerte servicio postventa." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://volgep.com/" />
+    <meta property="og:url" content="https://volgep.com/" />
+    <meta property="og:image" content="https://volgep.com/img/og-volgep.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
+
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "name": "VolGep",
+              "url": "https://TU_DOMINIO/",
+              "publisher": { "@type": "Organization", "name": "VolGep" }
+            },
+            {
+              "@type": "Organization",
+              "name": "VolGep",
+              "url": "https://TU_DOMINIO/",
+              "logo": "https://TU_DOMINIO/img/logo-volgep.svg",
+              "founders": [
+                {"@type": "Person", "name": "Mateo Voltolini"},
+                {"@type": "Person", "name": "Juan Bautista Gepp"}
+              ]
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://TU_DOMINIO/" },
+                { "@type": "ListItem", "position": 2, "name": "Nosotros", "item": "https://TU_DOMINIO/#nosotros" },
+                { "@type": "ListItem", "position": 3, "name": "Líneas de producto", "item": "https://TU_DOMINIO/#lineas" },
+                { "@type": "ListItem", "position": 4, "name": "Vivero y servicios", "item": "https://TU_DOMINIO/#vivero" },
+                { "@type": "ListItem", "position": 5, "name": "Contacto", "item": "https://TU_DOMINIO/#contacto" }
+              ]
+            }
+          ]
+        }
+    </script>
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="estilos.css" />
+
+    <!-- Mini estilos para chapitas de categoría -->
+    <style>
+        .badge {
+            display: inline-block;
+            font-weight: 700;
+            font-size: .78rem;
+            letter-spacing: .02em;
+            padding: .25rem .55rem;
+            border-radius: .5rem;
+            border: 1px solid rgba(255,255,255,.18);
+            margin-left: .35rem
+        }
+
+        .badge--red {
+            background: #2a1111;
+            border-color: #6d2424
+        }
+
+        .badge--yellow {
+            background: #2a2411;
+            border-color: #6d5f24
+        }
+
+        .badge--blue {
+            background: #111b2a;
+            border-color: #244b6d
+        }
+
+        .legend {
+            display: flex;
+            gap: .6rem;
+            flex-wrap: wrap
+        }
+
+            .legend span {
+                background: #141a26;
+                border: 1px solid #26324a;
+                border-radius: .5rem;
+                padding: .25rem .5rem;
+                font-size: .82rem;
+                color: #a7b0c0
+            }
+
+        .grid.cols-3 {
+            display: grid;
+            gap: var(--sp-4);
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr))
+        }
+
+        .section--accent {
+            background: linear-gradient(180deg,#111521,#0f1115)
+        }
+
+        .tagline {
+            color: var(--muted)
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="header" role="banner" aria-label="Encabezado">
+        <div class="container header__inner">
+            <a href="index.html" class="logo" aria-label="Volver al inicio">
+                <img src="img/logo.png" alt="VolGep" width="140" height="40" />
+            </a>
+
+            <nav class="nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Inicio</a></li>
+
+                    <li><a href="#nosotros">Nosotros</a></li>
+
+                    <!-- Productos con submenú -->
+                    <!-- Menú: Maquinarias -->
+                    <li class="nav__item--haschild">
+                        <a href="maquinaria.html" aria-haspopup="true" aria-expanded="false">Maquinarias</a>
+                        <ul class="nav__dropdown" aria-label="Maquinarias">
+                            <li><a href="productos.html"><span class="bullet">●</span> Trituradoras</a></li>
+                            <li><a href="trituradoras-desplazables.html"><span class="bullet">●</span> Trituradoras desplazables</a></li>
+                            <li><a href="accesorios.html"><span class="bullet">●</span> Accesorios bajo hileras</a></li>
+
+                        </ul>
+                    </li>
+
+                    <!-- Menú: Productos -->
+                    <li class="nav__item--haschild">
+                        <a href="productos.html" aria-haspopup="true" aria-expanded="false">Productos</a>
+                        <ul class="nav__dropdown" aria-label="Productos">
+                            <li><a href="coldkiller.html"><span class="bullet">●</span> Coldkiller</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a href="#repuestos">Repuestos</a></li>
+                    <li>
+                        <a href="#vivero">
+                            Vivero y servicios
+                        </a>
+                    </li>
+                    <li><a href="#faq">Preguntas</a></li>
+                    <li><a class="btn btn--primary" href="#contacto">Contacto</a></li>
+                </ul>
+</nav>
+
+        </div>
+    </header>
+
+    <!-- VIDEO INTRO -->
+    <!-- VIDEO INTRO (compacto con control arriba derecha) -->
+    <section class="video-intro">
+        <video id="introVideo" autoplay muted loop playsinline class="video-intro__bg">
+            <source src="img/video1.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+
+        <div class="video-intro__overlay"></div>
+
+        <div class="video-intro__content">
+            <img src="img/logo.png" alt="VolGep" class="video-intro__logo">
+        </div>
+
+        <!-- Icono de sonido (solo icono, arriba a la derecha) -->
+        <button id="soundToggle" class="sound-toggle" aria-label="Activar sonido" title="Activar sonido">
+            <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+
+        <script>
+            (function () {
+                const video = document.getElementById('introVideo');
+                const btn = document.getElementById('soundToggle');
+                const ico = btn.querySelector('i');
+
+                const ensurePlay = () => {
+                    const p = video.play();
+                    if (p && typeof p.then === 'function') p.catch(() => { });
+                };
+                ensurePlay();
+
+                function updateIcon() {
+                    // si está muteado, mostramos "xmark" (para invitar a activar)
+                    ico.className = video.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+                    btn.title = video.muted ? 'Activar sonido' : 'Silenciar';
+                    btn.setAttribute('aria-label', btn.title);
+                }
+                updateIcon();
+
+                btn.addEventListener('click', () => {
+                    video.muted = !video.muted;
+                    ensurePlay();
+                    updateIcon();
+                });
+            })();
+        </script>
+    </section>
+
+
+
+    <main id="contenido">
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container hero__inner">
+                <div class="hero__copy">
+                    <h1 id="hero-title">Maquinaria profesional para agro, forestación y espacios verdes</h1>
+                    <p class="tagline">Trituradoras forestales y de piedra — versiones <strong>PTO</strong> para tractores e <strong>hidráulicas</strong> para excavadoras y otras unidades. Experiencia real de campo y servicio postventa.</p>
+                    <div class="hero__cta">
+                        <a class="btn btn--primary" href="#" id="openProductos">Ver líneas</a>
+
+                        <a class="btn btn--ghost" href="#contacto">Pedir asesoramiento</a>
+                    </div>
+                    <ul class="hero__bullets" aria-label="Diferenciales">
+                        <li>Selección de productos probados en condiciones reales</li>
+                        <li>Logística eficiente y repuestos</li>
+                        <li>Acompañamiento técnico y seguridad operativa</li>
+                    </ul>
+                </div>
+                <div class="hero__media">
+                    <center> <img src="img/maquina1.jpeg" alt="Trituradora trabajando en el campo" loading="lazy"></center>
+                </div>
+            </div>
+        </section>
+        <div class="wave-sep" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            </svg>
+        </div>
+
+        <!-- NOSOTROS -->
+        <section id="nosotros" class="section section--light" aria-labelledby="nos-title">
+            <div class="container">
+                <h2 id="nos-title">VolGep: experiencia + visión técnica</h2>
+                <p>VolGep surge como una propuesta que combina experiencia y visión de futuro. Con el respaldo de más de 30 años de trayectoria en el sector, la empresa se especializa en la importación y distribución de maquinaria de alto rendimiento para la agricultura, la forestación y el mantenimiento de espacios productivos y públicos.</p>
+
+            </div>
+        </section>
+
+        <div class="wave-sep" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            </svg>
+        </div>
+
+        <!-- QUÉ OFRECEMOS -->
+        <section id="oferta" class="section" aria-labelledby="off-title">
+            <div class="container">
+                <h2 id="off-title">Qué ofrecemos</h2>
+                <p class="section__lead">Maquinaria profesional de alto rendimiento para agricultura, silvicultura y mantenimiento de espacios verdes.</p>
+
+                <div class="grid">
+                    <article class="feature">
+                        <h3>Trituradoras de martillos y cuchillas</h3>
+                        <ul>
+                            <li>Mantenimiento de frutales y viñedos</li>
+                            <li>Campo abierto y grandes superficies (aeropuertos, parques)</li>
+                            <li>Zonas complejas: pendientes, banquinas, ferrovías, cauces</li>
+                        </ul>
+                    </article>
+                    <article class="feature">
+                        <h3>Equipos forestales robustos</h3>
+                        <ul>
+                            <li>Trituración de arbustos y árboles de gran porte</li>
+                            <li>Fresado profundo de suelo para preparación forestal</li>
+                            <li>Reforestación, limpieza de montes y apertura de picadas</li>
+                        </ul>
+                    </article>
+                    <article class="feature">
+                        <h3>Trituradoras de piedra y soluciones hidráulicas</h3>
+                        <ul>
+                            <li>Toma de fuerza <strong>(PTO)</strong> para tractores</li>
+                            <li>Versiones <strong>hidráulicas</strong> para excavadoras y otras unidades</li>
+                            <li>Resultados consistentes, seguridad operativa y eficiencia comprobada</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="cta-strip" role="region" aria-label="Aclaraciones técnicas">
+                    <div class="legend" aria-label="Acrónimos">
+                        <span><strong>PTO</strong> = Toma de Fuerza</span>
+                        <span><strong>CL</strong> = Hidráulica</span>
+                        <span><strong>SOIL</strong> = Piedra</span>
+                        <span><strong>FORST</strong> = Forestal</span>
+                        <span><strong>PIERRE</strong> = Piedra</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- LÍNEAS DE PRODUCTO -->
+        <section id="productos-home" class="productos-intro">
+            <div class="container">
+                <h2>Nuestros productos</h2>
+                <p>
+                    En VolGep ofrecemos maquinaria profesional de alto rendimiento para la agricultura,
+                    la silvicultura y el mantenimiento de espacios verdes.
+                    Trituradoras forestales, trituradoras de piedra, soluciones hidráulicas y mucho más.
+                </p>
+                <a href="productos.html" class="btn btn--primary">Ver más productos</a>
+            </div>
+        </section> </p>
+        <!-- FOTO INTERMEDIA -->
+        <section class="seccion-imagen">
+            <img src="img/trituradora.jpeg" alt="Trituradora agrícola">
+        </section>
+
+        <div class="wave-sep" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            </svg>
+        </div>
+
+        <!-- REPUESTOS -->
+        <section id="repuestos" class="section" aria-labelledby="rep-title">
+            <div class="container repuestos__inner">
+                <div class="repuestos__content">
+                    <h2 id="rep-title">Repuestos</h2>
+                    <p>
+                        Ofrecemos un amplio stock de piezas para toda nuestra línea de equipos agrícolas y forestales, asegurando:
+                    </p>
+                    <ul>
+                        <li><strong>Disponibilidad inmediata</strong> de repuestos críticos.</li>
+                        <li><strong>Repuestos originales y alternativos certificados</strong>, garantizando calidad y durabilidad.</li>
+                        <li><strong>Asesoramiento técnico</strong> para identificar la pieza adecuada según el modelo.</li>
+                        <li><strong>Logística ágil en todo el país</strong>, con envíos rápidos a campo o taller.</li>
+                    </ul>
+                    <div class="hero__cta" style="margin-top:1rem">
+                        <a class="btn btn--primary" href="#contacto">Solicitar repuesto</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+        <div class="wave-sep" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            </svg>
+        </div>
+
+
+        <!-- VIVERO Y SERVICIOS -->
+        <section id="vivero" class="section" aria-labelledby="viv-title">
+            <div class="container vivero__inner">
+
+                <div class="vivero__content">
+                    <h2 id="viv-title">Vivero y servicios</h2>
+                    <p class="section__lead">
+                        Para soluciones integrales en forestación y servicios complementarios, visitá nuestro sitio aliado.
+                    </p>
+                    <a class="btn btn--primary" href="https://gvserviciosforestales.com"
+                       target="_blank" rel="noopener noreferrer">Ir a gvserviciosforestales.com</a>
+                </div>
+
+                <div class="vivero__media">
+                    <img src="img/vivero.jpg" alt="Vivero y servicios" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-sep" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            </svg>
+        </div>
+        <!-- FAQ (igual estructura) -->
+        <section id="faq" class="section section--light" aria-labelledby="faq-title">
+            <div class="container">
+                <h2 id="faq-title">Preguntas frecuentes</h2>
+                <details>
+                    <summary>¿Trabajan en  todo el país?</summary>
+                    <p>Sí, coordinamos entregas e instalaciones a nivel nacional con logística eficiente.</p>
+                </details>
+                <details>
+                    <summary>¿PTO o hidráulica? ¿Cómo elijo?</summary>
+                    <p>Depende del equipo disponible (tractor/excavadora), el tipo de trabajo (piedra vs forestal) y la profundidad/caudal requeridos. Te asesoramos según tu caso.</p>
+                </details>
+                <details>
+                    <summary>¿Hacen servicio postventa?</summary>
+                    <p>Sí. Repuestos, ajustes y soporte técnico. Nuestro enfoque es que el equipo produzca, seguro y con tiempos de parada mínimos.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="section section--light" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title">Contacto y cotizaciones</h2>
+                <p>Contanos tu necesidad (forestal / piedra, PTO / hidráulica) y el equipo con el que contás (tractor, excavadora, etc.).</p>
+                <form class="form" action="https://formspree.io/f/TU_ENDPOINT" method="POST" aria-label="Formulario de contacto">
+                    <div class="form__row">
+                        <label for="nombre">Nombre y apellido *</label>
+                        <input id="nombre" name="nombre" type="text" required autocomplete="name" />
+                    </div>
+                    <div class="form__row">
+                        <label for="email">Email *</label>
+                        <input id="email" name="email" type="email" required autocomplete="email" />
+                    </div>
+                    <div class="form__row">
+                        <label for="telefono">Teléfono *</label>
+                        <input id="telefono" name="telefono" type="tel" required autocomplete="tel" />
+                    </div>
+                    <div class="form__row">
+                        <label for="asunto">Asunto</label>
+                        <input id="asunto" name="asunto" type="text" placeholder="Forest • Piedra • PTO • Hidráulica" />
+                    </div>
+                    <div class="form__row">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Uso previsto, superficie, equipo disponible, plazo, ubicación."></textarea>
+                    </div>
+                    <div class="form__actions">
+                        <button type="submit" class="btn btn--primary">Enviar</button>
+                        <p class="form__disclaimer">Al enviar aceptás nuestra <a href="/politica-privacidad.html">política de privacidad</a>.</p>
+                    </div>
+                </form>
+
+                <address class="contact-data" aria-label="Datos de contacto">
+                    <ul>
+                        <li><strong>Email:</strong> <a href="mailto:infovolgep@gmail.com">infovolgep@gmail.com</a></li>
+
+                        <li> Uruguay</li>
+                    </ul>
+                </address>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__inner">
+            <p>© <span id="year"></span> VolGep. Todos los derechos reservados.</p>
+            <nav aria-label="Legal">
+                <a href="/terminos.html">Términos</a>
+                <a href="/politica-privacidad.html">Privacidad</a>
+
+            </nav>
+        </div>
+    </footer>
+
+    <noscript>
+        <p>Algunas funcionalidades del sitio pueden requerir JavaScript. Por favor, activalo para la mejor experiencia.</p>
+    </noscript>
+
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const y = document.getElementById('year');
+            if (y) y.textContent = new Date().getFullYear();
+        });
+
+        const els = [...document.querySelectorAll('.reveal')];
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: .12 });
+        els.forEach(el => io.observe(el));
+    </script>
+    <!-- ========== FAB WhatsApp ========== -->
+    <div class="whatsapp-fab" id="whatsappFab" aria-live="polite">
+        <div class="whatsapp-fab__panel" id="whPanel" role="dialog" aria-modal="false" aria-labelledby="whPanelTitle">
+            <div class="whatsapp-fab__title" id="whPanelTitle">Comunicate con el equipo VOLGEP</div>
+
+            <a class="whatsapp-fab__item"
+               href="https://wa.me/59892825972?text=Hola%2C%20te%20escribo%20desde%20VolGep.%20Estoy%20interesado%2Fa%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos.%20%C2%BFPodr%C3%ADan%20asesorarme%3F"
+               target="_blank"
+               rel="noopener">
+                <!-- icono -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 4A10.94 10.94 0 0 0 12 1 11 11 0 0 0 2.64 17.72L1 23l5.28-1.58A11 11 0 1 0 20 4Zm-8 18a8.94 8.94 0 0 1-4.72-1.34l-.36-.21-3.24.97.97-3.15-.24-.37A8.94 8.94 0 1 1 12 22Zm4.72-6.25c-.26-.13-1.52-.75-1.76-.83s-.41-.13-.58.13-.67.83-.82 1-.3.19-.56.06-1.09-.4-2.07-1.28c-.77-.68-1.28-1.52-1.43-1.78s-.02-.4.12-.53c.12-.12.26-.3.39-.45s.17-.26.26-.43.04-.32-.02-.45-.58-1.4-.8-1.92-.42-.43-.58-.44h-.5c-.15 0-.41.07-.62.33s-.82.8-.82 1.95.84 2.26.96 2.42 1.65 2.52 4 3.54c.56.24 1 .39 1.34.49.56.18 1.07.15 1.48.09.45-.07 1.39-.57 1.58-1.12.19-.55.19-1.02.13-1.12s-.24-.15-.5-.28Z" />
+                </svg>
+                <span>+598 92 825 972</span>
+            </a>
+
+        </div>
+
+        <button class="whatsapp-fab__btn attn" id="whToggle" aria-expanded="false" aria-controls="whPanel" aria-label="Abrir WhatsApp">
+            <!-- Ícono WhatsApp blanco -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="white" d="M20 3.999A10.939 10.939 0 0 0 12 1a11 11 0 0 0-9.362 16.715L1 23l5.463-1.637A11 11 0 1 0 20 4Zm-8 18c-1.789 0-3.53-.464-5.07-1.344l-.362-.209-3.237.97.97-3.152-.236-.375A8.932 8.932 0 0 1 3 12C3 7.037 7.038 3 12 3c4.962 0 9 4.037 9 9s-4.038 9-9 9Zm4.724-6.249c-.258-.129-1.524-.75-1.76-.834s-.409-.129-.581.129c-.173.258-.667.834-.818 1.003-.151.172-.301.194-.559.065-.258-.129-1.089-.401-2.074-1.278-.766-.683-1.281-1.525-1.432-1.783-.151-.258-.016-.397.113-.526.116-.115.258-.301.387-.451.129-.151.172-.259.258-.431.086-.173.043-.323-.021-.452-.064-.129-.58-1.397-.795-1.914-.209-.502-.42-.433-.58-.441h-.495c-.151 0-.409.065-.624.323s-.818.8-.818 1.95.838 2.263.956 2.418c.129.151 1.652 2.525 4.004 3.541.56.242.997.387 1.338.496.562.18 1.074.155 1.478.094.451-.065 1.389-.568 1.585-1.118.194-.55.194-1.022.136-1.118-.057-.097-.236-.151-.495-.28Z" />
+            </svg>
+            <!-- Burbuja de notificación -->
+            <span class="whatsapp-fab__badge">1</span>
+        </button>
+    </div>
+
+    
+
+    </div>
+
+
+</body>
+</html>
