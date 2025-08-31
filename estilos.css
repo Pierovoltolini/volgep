@@ -3571,6 +3571,59 @@ img[src*="botellacold"] {
 
 
 
+    form {
+        max-width: 520px;
+        display: grid;
+        gap: 12px;
+    }
+
+    label {
+        display: grid;
+        gap: 6px;
+        font-size: 0.95rem;
+    }
+
+    input, textarea {
+        padding: 10px 12px;
+        border: 1px solid #d7d7d7;
+        border-radius: 8px;
+        font: inherit;
+    }
+
+    button {
+        padding: 12px 16px;
+        border: 0;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        background: #111;
+        color: #fff;
+    }
+
+        button:hover {
+            opacity: .9;
+        }
+
+    .form-alert {
+        margin: 0 0 12px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: #e9f7ef;
+        border: 1px solid #c8edd9;
+        color: #1a7f49;
+        font-size: 0.95rem;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
