@@ -3524,6 +3524,42 @@ img[src*="botellacold"] {
                 height: 26px;
             }
     }
+    /* --- abrir submenú por clase/aria (sin tocar hover existente) --- */
+    .nav .nav__item--haschild > .nav__dropdown {
+        display: none;
+    }
+
+    .nav .nav__item--haschild.is-open > .nav__dropdown,
+    .nav .nav__item--haschild > a[aria-expanded="true"] + .nav__dropdown {
+        display: block;
+    }
+    /* Forzar apertura del submenú por clase/ARIA */
+    .nav .nav__item--haschild > .nav__dropdown {
+        display: none;
+    }
+
+    .nav .nav__item--haschild.is-open > .nav__dropdown,
+    .nav .nav__item--haschild > a[aria-expanded="true"] + .nav__dropdown {
+        display: block;
+    }
+    /* === Abrir submenú por clase/ARIA (sin romper hover de desktop) === */
+    .nav .nav__item--haschild > .nav__dropdown {
+        display: none;
+    }
+
+    .nav .nav__item--haschild.is-open > .nav__dropdown,
+    .nav .nav__item--haschild > a[aria-expanded="true"] + .nav__dropdown {
+        display: block !important;
+    }
+
+    /* En móviles, que el submenú se comporte como bloque “normal” */
+    @media (max-width: 980px) {
+        .nav .nav__dropdown {
+            position: static !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    }
 
 
 

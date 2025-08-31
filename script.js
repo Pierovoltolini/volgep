@@ -841,3 +841,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2) Los hijos del submenú siguen navegando y pueden cerrar el drawer
     //    (dejamos que tus handlers existentes hagan eso).
 })();
+document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('openProductos');
+    if (!openBtn) return;
+
+    // 1) Localizar el <li> de "Maquinarias"
+    function getLiMaquinarias() {
+        // Si ya le pusiste id="navMaquinarias", usamos ese:
+        let li = document.getElementById('navMaquinarias');
+        if (li) return li;
+
+        // Fallback: buscar el <a> cuyo texto sea "Maquinarias" o enlace a "maquinaria"
+        const trigger = Array.from(document.querySelectorAll('.nav .nav__item--haschild > a'))
+            .find(a => /maquinari/i.test(a.textContent) || /maquinaria\.html/i.test(a.getAttribute('href') || ''));
+        return trigger ? trigger.closest('.nav__item--haschild') : null;
+    }
+
+    // 2) Intentar abrir el contenedor del nav en móvil (si existe)
+    function openNavContainerIfCollapsed() {
+        // a) Si hay botón con aria-controls (muy común)
+        const btn = document.querySelector('button[aria-controls], [data-nav-toggle], .nav-toggle, .menu-toggle, .hamburger');
+        if (btn && btn.getAttribute('aria-controls')) {
+            const targetId = btn.getAttribute('aria-controls');
+            const panel = document.getElementById(targetId);
+            if (panel && getComputedStyle(panel).display === 'none') {
+                btn.setAttribute('aria-expanded', 'true');
+                // si tu script maneja display vía clases, agregar pista:
+                btn.classList.add('is-open');
+                panel.classList.add('is-open');
+            }
+        }
+
+        // b) Fallback genérico: algunas implementaciones abren con .is-open en .nav o en <body>
+        const navEl = document.querySelector('.nav');
+        navEl && navEl.classList.add('is-open');
+        document.body.classList.add('nav-open');
+    }
+
+    // 3) Abrir el submenú de Maquinarias
+    function openSubmenuMaquinarias() {
+        const liMach = getLiMaquinarias();
+        if (!liMach) return;
+
+        liMach.classList.add('is-open');
+
+        const trigger = liMach.querySelector('a[aria-haspopup="true"]') || liMach.querySelector('a');
+        if (trigger) {
+            trigger.setAttribute('aria-expanded', 'true');
+            // Evitar navegación inmediata si el <a> tiene href a maquinaria.html
+            trigger.addEventListener('click', (ev) => {
+                // si ya está abierto por nuestro botón, no navegamos en el primer click
+                if (trigger.dataset.openedBy === 'openProductos') {
+                    ev.preventDefault();
+                    // Quitamos la marca para que un segundo click sí navegue
+                    delete trigger.dataset.openedBy;
+                }
+            }, { once: true });
+
+            trigger.dataset.openedBy = 'openProductos';
+            trigger.focus({ preventScroll: true });
+        }
+
+        liMach.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 4) Click de “Ver líneas”
+    openBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openNavContainerIfCollapsed();
+        openSubmenuMaquinarias();
+    });
+});
