@@ -3642,18 +3642,42 @@ img[src*="botellacold"] {
         margin-top: .75rem;
     }
 
+    .footer__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 
+    .footer-ig {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        text-decoration: none;
+    }
 
+        .footer-ig i {
+            font-size: 22px;
+            color: #E4405F;
+        }
+    /* color oficial IG */
+    .footer-ig {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        text-decoration: none;
+        background: transparent;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+        .footer-ig svg {
+            display: block;
+        }
+        /* Footer: agrandar icono de Instagram */
+        .footer-ig i.fa-instagram {
+            font-size: 28px; /* antes 22px aprox — ajustá si querés */
+            line-height: 1;
+            color: #E4405F; /* color oficial IG */
+            margin-right: .5rem;
+            vertical-align: middle;
+        }
