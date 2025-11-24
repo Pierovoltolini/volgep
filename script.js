@@ -286,45 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Abrir "Productos" desde el botón "Ver líneas"
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('openProductos');
-    const liProd = document.getElementById('navProductos');
-    const nav = document.querySelector('.nav');
-    if (!btn || !liProd || !nav) return;
-
-    const linkProd = liProd.querySelector('a');
-
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isMobile = window.matchMedia('(max-width: 980px)').matches;
-
-        if (isMobile) {
-            // abre menú hamburguesa y luego el submenú
-            nav.classList.add('nav--open');
-            liProd.classList.add('nav--open-sub');
-            linkProd.setAttribute('aria-expanded', 'true');
-            linkProd.focus();
-        } else {
-            // desktop: abrir dropdown como si fuera hover
-            liProd.classList.add('force-open');
-            linkProd.setAttribute('aria-expanded', 'true');
-            linkProd.focus();
-
-            // cerrar al hacer click afuera
-            const close = (ev) => {
-                if (!liProd.contains(ev.target) && ev.target !== btn) {
-                    liProd.classList.remove('force-open');
-                    linkProd.setAttribute('aria-expanded', 'false');
-                    document.removeEventListener('click', close);
-                }
-            };
-            // pequeño delay para no cerrarlo por el mismo click
-            setTimeout(() => document.addEventListener('click', close), 0);
-        }
-    });
-});
-
 
 // Abrir/cerrar submenú "Productos" también con click
 document.addEventListener('DOMContentLoaded', () => {
@@ -659,7 +620,82 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 
+/* =========================================
+   FIX DEFINITIVO PARA MOBILE/IPAD
+   "VER LÍNEAS" → SOLO ABRE EL MENÚ HAMBURGUESA
+========================================= */
+document.addEventListener("DOMContentLoaded", () => {
 
+    const btnLines = document.getElementById("openProductos");
+    const nav = document.querySelector(".nav");
+    const burger = document.querySelector(".header__burger");
+
+    if (!btnLines || !nav || !burger) return;
+
+    btnLines.addEventListener("click", (e) => {
+
+        const isMobile = window.innerWidth <= 980;
+        if (!isMobile) return; // → desktop no se toca
+
+        // 🔥 BLOQUEAR TODO: ningún otro listener debe actuar
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+        // 🔥 ABRIR SOLO EL MENÚ HAMBUGUESA
+        nav.classList.add("nav--open");
+        burger.setAttribute("aria-expanded", "true");
+
+        // 🔥 NO abrir submenús
+        nav.querySelectorAll(".nav--open-sub")
+           .forEach(li => li.classList.remove("nav--open-sub"));
+    }, true); // ← MUY IMPORTANTE: CAPTURE MODE
+});
+
+/* ================================
+   BOTÓN X → CERRAR MENÚ (solo mobile)
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector(".nav");
+    const burger = document.querySelector(".header__burger");
+    const closeBtn = document.querySelector(".nav__close");
+
+    if (!nav || !burger || !closeBtn) return;
+
+    closeBtn.addEventListener("click", () => {
+        nav.classList.remove("nav--open");
+        burger.setAttribute("aria-expanded", "false");
+    });
+});
+/* =========================================
+   MOBILE → CERRAR MENÚ AL TOCAR FUERA
+========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector(".nav");
+    const burger = document.querySelector(".header__burger");
+
+    if (!nav || !burger) return;
+
+    // Cierra el menú si se toca fuera
+    document.addEventListener("click", (e) => {
+        const isMobile = window.innerWidth <= 980;
+
+        if (!isMobile) return;
+
+        // Si el menú NO está abierto → no hacemos nada
+        if (!nav.classList.contains("nav--open")) return;
+
+        // Si tocó dentro del menú → no cerrar
+        if (nav.contains(e.target)) return;
+
+        // Si tocó la hamburguesa → no cerrar, eso lo maneja su click
+        if (burger.contains(e.target)) return;
+
+        // 👉 CERRAR MENÚ
+        nav.classList.remove("nav--open");
+        burger.setAttribute("aria-expanded", "false");
+    });
+});
 
 
 
