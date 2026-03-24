@@ -353,7 +353,7 @@
         <section class="section">
             <div class="container-narrow cards-2">
                 <!-- APPLE vario -->
-                <article class="procard">
+                <article class="procard" data-name="apple-vario">
                     <figure class="procard__media">
                         <img src="img/ap.jpeg" alt="APPLE vario – Trituradora de cuchillas giratorias de ancho variable" loading="lazy">
                     </figure>
@@ -375,7 +375,7 @@
                 </article>
 
                 <!-- XTI | XTN -->
-                <article class="procard">
+              <article class="procard" data-name="xti-xtn">
                     <figure class="procard__media">
                         <img src="img/xti.png" alt="XTI | XTN – Trituradora entre hileras con cepillo" loading="lazy">
                     </figure>
@@ -401,7 +401,7 @@
         <!-- Portadora / Accesorio -->
         <section class="section">
             <div class="container-narrow">
-                <article class="port-card">
+               <article class="port-card" data-name="port-x">
                     <figure class="card__media">
                         <img src="img/por.jpeg" alt="PORT-X – Portadora de accesorios con enganche de 3 puntos y conexión rápida 2-FAST" loading="lazy">
                     </figure>
@@ -482,18 +482,35 @@
         <a href="https://www.instagram.com/volgep.uy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
            target="_blank" rel="noopener" aria-label="Instagram Volgep" class="footer-ig">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            <strong> <span>Seguinos en Instagram</span></strong>
+            <strong> <span>¡Seguinos en Instagram VOLGEP!</span></strong>
         </a>
 
-        <nav aria-label="Legal">
-            <a href="/terminos.html">Términos</a>
-            <a href="/politica-privacidad.html">Privacidad</a>
-        </nav>
+          <p class="credito">
+  Sitio desarrollado por
+  <a href="https://innovawebagency.net" target="_blank" rel="noopener noreferrer">
+    innovawebagency.net
+  </a>
+</p>
     </div>
 </footer>
    
     <script>
         const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     </script>
+    <script>
+  document.querySelectorAll('.procard[data-name], .port-card[data-name]').forEach((card) => {
+    const slug = card.dataset.name;
+    if (!slug) return;
+
+    card.style.cursor = 'pointer';
+
+    card.addEventListener('click', (e) => {
+      const clickedInteractive = e.target.closest('a, button, summary');
+      if (clickedInteractive) return;
+
+      window.open(`producto.html?slug=${slug}`, '_blank');
+    });
+  });
+</script>
 </body>
 </html>

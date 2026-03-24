@@ -3852,3 +3852,22 @@ img[src*="botellacold"] {
         display: none !important;
     }
 }
+/* === Hover claro para la ficha de producto === */
+.product-page .btn--secondary {
+  background: #eef6ee;
+  border-color: #d1e2d1;
+  color: #2b3f31;
+}
+
+.product-page .btn--secondary:hover {
+  background: #dfeedd;
+  border-color: #bdd3bd;
+  color: #223428;
+}
+
+.product-page .btn--primary:hover {
+  background: #256729;
+  border-color: #256729;
+  color: #fff;
+  filter: none;
+}

@@ -708,18 +708,20 @@
             <a href="https://www.instagram.com/volgep.uy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                target="_blank" rel="noopener" aria-label="Instagram Volgep" class="footer-ig">
                 <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                <strong> <span>Seguinos en Instagram</span></strong>
+                <strong> <span>¡Seguinos en Instagram VOLGEP!</span></strong>
             </a>
 
-            <nav aria-label="Legal">
-                <a href="/terminos.html">Términos</a>
-                <a href="/politica-privacidad.html">Privacidad</a>
-            </nav>
+              <p class="credito">
+  Sitio desarrollado por
+  <a href="https://innovawebagency.net" target="_blank" rel="noopener noreferrer">
+    innovawebagency.net
+  </a>
+</p>
         </div>
     </footer>
 
     <!-- FAB de WhatsApp: si lo querés fijo en todas las páginas, pegá aquí el mismo bloque del index -->
-
+    
     <script>
         // ====== Filtros con URL (?cat=&sys=&q=) y back/forward ======
         (function () {
@@ -816,6 +818,20 @@
             alert(link.dataset.msg || 'Sección en construcción.');
         });
     </script>
+<script>
+  document.querySelectorAll('.card[data-name]').forEach((card) => {
+    const slug = card.dataset.name;
+    if (!slug) return;
 
+    card.style.cursor = 'pointer';
+
+    card.addEventListener('click', (e) => {
+      const clickedInteractive = e.target.closest('a, button, summary');
+      if (clickedInteractive) return;
+
+      window.open(`producto.html?slug=${slug}`, '_blank');
+    });
+  });
+</script>
 </body>
 </html>
