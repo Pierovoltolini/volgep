@@ -149,6 +149,27 @@ function fallbackCopyLink() {
   }
 }
 
+function buildSpecsTable(specs) {
+  if (!specs.length) return "";
+  const rows = specs.map(item => {
+    const colonIdx = item.indexOf(":");
+    if (colonIdx > 0 && colonIdx < 55) {
+      const key = item.slice(0, colonIdx).trim();
+      const val = item.slice(colonIdx + 1).trim();
+      return `<tr><th scope="row">${key}</th><td>${val}</td></tr>`;
+    }
+    return `<tr class="specs-table__full"><td colspan="2">${item}</td></tr>`;
+  }).join("");
+  return `
+    <div class="product-card-block">
+      <h3>Especificaciones técnicas</h3>
+      <table class="specs-table">
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
 function renderProduct(product) {
   const container = document.getElementById("product-content");
 
@@ -160,16 +181,7 @@ function renderProduct(product) {
     `
     : "";
 
-  const specsHtml = product.specs.length
-    ? `
-      <div class="product-card-block">
-        <h3>Información del producto</h3>
-        <ul class="product-spec-list">
-          ${product.specs.map(item => `<li>${item}</li>`).join("")}
-        </ul>
-      </div>
-    `
-    : "";
+  const specsHtml = buildSpecsTable(product.specs);
 
   container.className = "product-wrap";
   container.innerHTML = `

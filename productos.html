@@ -32,10 +32,10 @@
 <meta name="theme-color" content="#0f141d" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
-  <!-- Tipografías -->
+  <!-- Tipografías estilo editorial -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="estilos.css" />
@@ -150,32 +150,88 @@
   <!-- JS de la página (si aplica) -->
   <script src="script.js" defer></script>
 
-  <!-- Estilos locales de la vista (si querés mantenerlos aquí) -->
+  <!-- Estilos locales de la vista -->
   <style>
-    /* Layout página de productos */
-    .shop{display:grid;grid-template-columns:260px 1fr;gap:var(--sp-4)}
-    .shop__sidebar{position:sticky;top:76px;align-self:start;background:var(--paper);border:1px solid var(--border);border-radius:.6rem;padding:var(--sp-3)}
-    .shop__title{margin-bottom:.25rem}
-    .cat-list{list-style:none;padding:0;margin:0;display:grid;gap:.25rem}
-    .cat-list a{display:flex;justify-content:space-between;gap:.5rem;padding:.55rem .65rem;border-radius:.5rem;color:var(--text);text-decoration:none;border:1px solid var(--border);background:#f7fbf7}
-    .cat-list a[aria-current="true"],.cat-list a:hover{background:#e9f3e9;border-color:#cfe3d0}
-    .shop__filters{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-    .chips{display:flex;flex-wrap:wrap;gap:.5rem}
-    .chip{padding:.45rem .7rem;border-radius:999px;border:1px solid #cfe3d6;background:#eef5f0;color:#2c3f32;font-weight:700;cursor:pointer}
-    .chip[aria-pressed="true"]{background:#2e7d32;border-color:#2e7d32;color:#fff}
+    /* ── Fuentes editoriales ── */
+    body { font-family: 'Barlow', sans-serif; }
+    h1,h2,h3,.shop__title,.product-kicker { font-family: 'Cormorant Garamond', serif; }
+
+    /* ── Layout tienda ── */
+    .shop{display:grid;grid-template-columns:240px 1fr;gap:var(--sp-4)}
+    .shop__sidebar{position:sticky;top:76px;align-self:start;background:var(--paper);border:1px solid var(--border);border-radius:0;padding:var(--sp-3);border-top:2px solid #1a1a1a}
+    .shop__title{margin-bottom:.15rem;font-size:2.6rem;font-weight:300;letter-spacing:.04em;text-transform:uppercase}
+    .section__lead{font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400}
+
+    /* ── Sidebar categorías ── */
+    .cat-list{list-style:none;padding:0;margin:0;display:grid;gap:0}
+    .cat-list a{display:flex;justify-content:space-between;gap:.5rem;padding:.55rem .1rem;color:var(--text);text-decoration:none;border:none;border-bottom:1px solid #e8e8e8;background:transparent;font-size:.83rem;letter-spacing:.08em;text-transform:uppercase;transition:color .18s}
+    .cat-list a[aria-current="true"],.cat-list a:hover{color:#1a1a1a;font-weight:600;background:transparent;border-bottom-color:#1a1a1a}
+
+    /* ── Chips filtros ── */
+    .shop__filters{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+    .chip{padding:.38rem .75rem;border-radius:0;border:1px solid #c8c8c8;background:transparent;color:#1a1a1a;font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .18s}
+    .chip:hover{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+    .chip[aria-pressed="true"]{background:#1a1a1a;border-color:#1a1a1a;color:#fff}
     .shop__tools{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-    .shop__tools input[type="search"],.shop__tools select{background:#fff;border:1px solid #dfe8df;color:var(--text);padding:.6rem .7rem;border-radius:.6rem}
-    .results-meta{color:var(--muted);font-size:.95rem}
-    .grid.products{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .card .meta{color:var(--muted);font-size:.9rem;margin-top:.25rem}
-    .card .tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.35rem}
-    .tag{font-size:.78rem;padding:.15rem .45rem;border-radius:.45rem;border:1px solid #d9e7d8;color:#2c4a36;background:#eef6ee}
-    @media (max-width:980px){.shop{grid-template-columns:1fr}.shop__sidebar{position:static}}
+    .shop__tools input[type="search"]{background:transparent;border:none;border-bottom:1px solid #c8c8c8;color:var(--text);padding:.5rem .3rem;border-radius:0;font-size:.83rem;letter-spacing:.05em;outline:none;transition:border-color .18s}
+    .shop__tools input[type="search"]:focus{border-bottom-color:#1a1a1a}
+    .results-meta{color:var(--muted);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+
+    /* ── Grid productos ── */
+    .grid.products{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem 1rem}
+
+    /* ── Cards estilo editorial ── */
+    .card{border:none;border-radius:0;background:transparent;box-shadow:none;overflow:visible;transition:none;cursor:pointer}
+    .card__media{margin:0;border-radius:0;overflow:hidden;background:#f5f5f3;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+    .card__media img{width:100%;height:100%;object-fit:contain;transition:transform .4s cubic-bezier(.25,.46,.45,.94);padding:.75rem}
+    .card:hover .card__media img{transform:scale(1.04)}
+    .card__body{padding:.6rem 0 .5rem;border-top:1px solid #e0e0e0;margin-top:.5rem}
+    .card__body h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;letter-spacing:.02em;color:#1a1a1a;margin:0 0 .2rem;line-height:1.25}
+    .card__body h3 .tag{display:none}
+    .card .meta{color:#888;font-size:.76rem;letter-spacing:.04em;margin:.1rem 0 .3rem;line-height:1.4}
+    .card .tags{display:flex;gap:.25rem;flex-wrap:wrap;margin-top:.25rem}
+    .tag{font-size:.68rem;padding:.1rem .4rem;border-radius:0;border:1px solid #d0d0d0;color:#555;background:transparent;letter-spacing:.07em;text-transform:uppercase}
+
+    /* ── Botones de la card ── */
+    .card__actions{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
+    .card__actions .btn{border-radius:0;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .7rem;font-weight:500}
+
+    /* ── Responsive ── */
+    @media(max-width:980px){
+      .shop{grid-template-columns:1fr}
+      .shop__sidebar{position:static;border-top:2px solid #1a1a1a}
+    }
+    @media(max-width:640px){
+      .grid.products{grid-template-columns:repeat(2,1fr) !important;gap:.75rem .5rem !important}
+      .shop__title{font-size:1.9rem}
+      .shop__filters{flex-direction:column;align-items:stretch;gap:.4rem}
+      .shop__tools{width:100%}
+      .shop__tools input[type="search"]{width:100%}
+      .chips{gap:.3rem}
+      .chip{padding:.45rem .6rem;font-size:.72rem}
+      .shop__sidebar{padding:.6rem}
+      .card__media{aspect-ratio:1/1}
+      .card__body h3{font-size:.92rem}
+      .card .meta{font-size:.7rem}
+      .tag{font-size:.62rem;padding:.08rem .32rem}
+      .card__actions .btn{font-size:.65rem;padding:.35rem .55rem}
+    }
+    @media(max-width:380px){
+      .grid.products{gap:.5rem .35rem}
+      .card__body h3{font-size:.85rem}
+    }
+
+    /* ── Dropdown nav ── */
     .nav__item--haschild{position:relative}
-    .nav__dropdown{position:absolute;left:0;top:calc(100% + 6px);background:#fff;border:1px solid #dfe7df;border-radius:.6rem;padding:.4rem;list-style:none;margin:0;min-width:220px;display:none;z-index:60;box-shadow:0 18px 36px rgba(26,47,34,.14)}
+    .nav__dropdown{position:absolute;left:0;top:calc(100% + 6px);background:#fff;border:1px solid #dfe7df;border-radius:0;padding:.4rem;list-style:none;margin:0;min-width:220px;display:none;z-index:60;box-shadow:0 18px 36px rgba(26,47,34,.14)}
     .nav__item--haschild:hover>.nav__dropdown,.nav__item--haschild:focus-within>.nav__dropdown{display:block}
-    .nav__dropdown a{display:block;padding:.55rem .7rem;border-radius:.45rem}
-    .nav__dropdown a:hover{background:#eaf3ea;text-decoration:none}
+    .nav__dropdown a{display:block;padding:.55rem .7rem;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+    .nav__dropdown a:hover{background:#f5f5f3;text-decoration:none}
+
+    /* ── Sidebar headings ── */
+    .shop__sidebar h2,.shop__sidebar h3{font-family:'Barlow',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#888;margin:.7rem 0 .4rem}
+    .shop__sidebar hr{border:none;border-top:1px solid #e8e8e8;margin:.65rem 0}
   </style>
 </head>
 
@@ -280,10 +336,8 @@
                             <div class="card__body">
                                 <h3>Miniforst <span class="tag">Forestal</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Compacta y robusta para cuidado forestal.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Poda, arbustos y madera hasta Ø 20 cm.</li>
                                             <li>Velocidad de trabajo: 0–5 km/h.</li>
@@ -296,8 +350,7 @@
                                             <li>Protección frontal con cadenas dobles.</li>
                                             <li>Anchos de trabajo: 150, 175 y 200 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -306,10 +359,8 @@
                             <div class="card__body">
                                 <h3>Midiforst <span class="tag">Forestal</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Potente y compacta para uso profesional.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Tritura madera hasta Ø 25 cm; velocidad 0–5 km/h.</li>
                                             <li>Rotor MINI DUO + EXTREME (carburo).</li>
@@ -319,8 +370,7 @@
                                             <li>Enganche 3 puntos ISO II cat. central fijo posterior.</li>
                                             <li>Anchos de trabajo: 175, 200 y 225 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
                         <article class="card" data-cat="forestal" data-sys="pto" data-name="microforst">
@@ -330,11 +380,9 @@
                             <div class="card__body">
                                 <h3>Microforst pto  <span class="tag">Forestal</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Ligera y robusta para mantenimiento forestal.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">PTO</span></div>
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">PTO</span></div>
 
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Tritura madera de hasta Ø 13 cm.</li>
                                             <li>Velocidad de avance: 0–5 km/h.</li>
@@ -350,8 +398,7 @@
                                             <li>1 fila de contracuchillas templadas.</li>
                                             <li>Colores: antracita RAL7021 | rojo RAL3020.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -360,10 +407,8 @@
                             <div class="card__body">
                                 <h3>Midiforst DT <span class="tag">Forestal</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Universal para profesionales; mayor exigencia.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Madera hasta Ø 30 cm; 0–5 km/h.</li>
                                             <li>Rotor de nueva generación: MINI DUO + MONO EXTREME.</li>
@@ -374,8 +419,7 @@
                                             <li>Opción rotor MONO TIP V-LOCK: más agresivo, menos desgaste, cambio fácil.</li>
                                             <li>Anchos de trabajo: 200, 225 y 250 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -384,10 +428,8 @@
                             <div class="card__body">
                                 <h3>Starforst <span class="tag">Forestal</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Versátil y potente, para tractores hasta 350 CV.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Usada en trabajos forestales profesionales y limpieza de bosques.</li>
                                             <li>Tritura madera de hasta Ø 40 cm.</li>
@@ -402,8 +444,7 @@
                                             <li>Enganche ISO III cat. central articulado.</li>
                                             <li>Sistema ADAM: alineación de cardán con ángulos en W.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -412,10 +453,8 @@
                             <div class="card__body">
                                 <h3>Maxiforst <span class="tag">Forestal</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Alto rendimiento para condiciones extremas.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Tractores 300–500 CV; madera hasta Ø 60 cm.</li>
                                             <li>Placas HARDOX® intercambiables en caja y patines.</li>
@@ -423,8 +462,7 @@
                                             <li>Sistema ADAM de serie.</li>
                                             <li>Transmisión reforzada: 2×5 correas por lado; multiplicador 1000 rpm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -437,10 +475,8 @@
                             <div class="card__body">
                                 <h3>Midipierre <span class="tag">Piedra</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Compacta y versátil; recuperación de terrenos.</p>
-                                <div class="tags"><span class="tag">PIERRE</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">PIEDRAS</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Piedras/roca hasta Ø 20 cm.</li>
                                             <li>Profundidad de trabajo hasta 12 cm (o más según condiciones).</li>
@@ -452,8 +488,7 @@
                                             <li>Velocidad de trabajo: 0–2 km/h.</li>
                                             <li>Anchos: 125 y 150 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -463,10 +498,8 @@
                             <div class="card__body">
                                 <h3>Midipierre DT <span class="tag">Piedra</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Trituradora de alto rendimiento para caminos y terrenos difíciles.</p>
-                                <div class="tags"><span class="tag">PIERRE</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">PIEDRAS</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Más de <strong>30 años</strong> de experiencia en triturado de piedras.</li>
                                             <li>Rompe y fresa piedras, recicla material, estabiliza terrenos y consolida bases de caminos.</li>
@@ -481,8 +514,7 @@
                                             <li>Velocidad de avance: <strong>0–2 km/h</strong>.</li>
                                             <li>Anchos de trabajo: <strong>175, 200, 225 cm</strong>.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -492,10 +524,8 @@
                             <div class="card__body">
                                 <h3>Midisoil <span class="tag">Piedra</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Fresa polivalente (100–170 CV).</p>
-                                <div class="tags"><span class="tag">SOIL</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">SUELO</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Piedra y madera hasta Ø 25 cm; fresa hasta 25 cm.</li>
                                             <li>Velocidad 0–2 km/h (requiere marchas super lentas, máx. 0,5 km/h).</li>
@@ -507,8 +537,7 @@
                                             <li>ISOBUS de serie (tractores compatibles).</li>
                                             <li>Anchos: 175, 200, 225 y 250 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -517,10 +546,8 @@
                             <div class="card__body">
                                 <h3>Multiforst <span class="tag">Piedra</span> <span class="tag">PTO</span></h3>
                                 <p class="meta">Polivalente 3 en 1: madera, piedra y suelo.</p>
-                                <div class="tags"><span class="tag">SOIL</span><span class="tag">PTO</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">SUELO</span><span class="tag">PTO</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Madera hasta Ø 40 cm; piedra y profundidad hasta 30 cm.</li>
                                             <li>Velocidad 0–2 km/h (marchas ultralentas).</li>
@@ -532,8 +559,7 @@
                                             <li>Especificaciones: 3 puntos ISO III; PTO 1 3/4” Z=20; rueda libre; limitador de par.</li>
                                             <li>Anchos: 225 y 250 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -547,10 +573,8 @@
                             <div class="card__body">
                                 <h3>Microforst CL <span class="tag">Forestal</span> <span class="tag">Hidráulica</span></h3>
                                 <p class="meta">Ligera; estable en pendientes (montaje hidráulico).</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">HID</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">HIDRÁULICA</span></div>
+                                <div class="card__specs-data" hidden>
                                         <!-- Reutilizamos la ficha disponible para no perder info -->
                                         <ul class="specs">
                                             <li>Tritura arbustos y madera hasta Ø 13 cm.</li>
@@ -560,8 +584,7 @@
                                             <li>Anchos de trabajo: 125 y 150 cm.</li>
                                             <li>Velocidad de avance: 0–5 km/h.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -570,10 +593,8 @@
                             <div class="card__body">
                                 <h3>Miniforst CL <span class="tag">Forestal</span> <span class="tag">Hidráulica</span></h3>
                                 <p class="meta">Trituradora forestal SEPPI para palas compactas de tamaño medio.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">HID</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">HIDRÁULICA</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Eliminación de ramas, arbustos, madera y cepas.</li>
                                             <li>Perfecta para zonas de difícil acceso (montaje en palas compactas).</li>
@@ -588,8 +609,7 @@
                                             <li>Placa de enganche SAE (fijo).</li>
                                             <li>Predispuesta para motor hidráulico: 90–190 l/min, 350 bar máx.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -598,10 +618,8 @@
                             <div class="card__body">
                                 <h3>Midiforst <span class="tag">Forestal</span> <span class="tag">Hidráulica</span></h3>
                                 <p class="meta">Trituradora SEPPI para vehículos hidráulicos hasta 300 CV.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">HID</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">HIDRÁULICA</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Placa de enganche universal o 3 puntos ISO II cat.</li>
                                             <li>Tritura madera de hasta Ø 30 cm.</li>
@@ -614,8 +632,7 @@
                                             <li>Presión máx. 420 bar; caudal 240–430 l/min.</li>
                                             <li>Capó regulable hidráulico.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -624,10 +641,8 @@
                             <div class="card__body">
                                 <h3>Starforst (tractor) <span class="tag">Forestal</span> <span class="tag">Hidráulica</span></h3>
                                 <p class="meta">Versátil y potente en configuración hidráulica.</p>
-                                <div class="tags"><span class="tag">FORST</span><span class="tag">HID</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">FORESTAL</span><span class="tag">HIDRÁULICA</span></div>
+                                <div class="card__specs-data" hidden>
                                         <!-- Conservamos la info base -->
                                         <ul class="specs">
                                             <li>Tritura madera de hasta Ø 40 cm.</li>
@@ -636,8 +651,7 @@
                                             <li>Rotor helicoidal MINI DUO + EXTREME; opcional MONO TIP V-LOCK.</li>
                                             <li>Chasis con placas HARDOX®; 5 filas de contracuchillas.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -649,10 +663,8 @@
                             <div class="card__body">
                                 <h3>Minisoil <span class="tag">Piedra</span> <span class="tag">Hidráulica</span></h3>
                                 <p class="meta">Para skid steer (perfil bajo y alta visibilidad).</p>
-                                <div class="tags"><span class="tag">SOIL</span><span class="tag">HID</span></div>
-                                <details class="more-info">
-                                    <summary>Más información</summary>
-                                    <div class="more-info__content">
+                                <div class="tags"><span class="tag">SUELO</span><span class="tag">HIDRÁULICA</span></div>
+                                <div class="card__specs-data" hidden>
                                         <ul class="specs">
                                             <li>Piedra Ø 15 cm; madera/arbustos Ø 20 cm; profundidad hasta 10 cm.</li>
                                             <li>Rotor helicoidal SUPER DUO PROTECT + EXTREM (carburo); soportes antidesgaste.</li>
@@ -661,8 +673,7 @@
                                             <li>2 motores M-BOOST (60–80 cm³) de pistón, cilindrada automática.</li>
                                             <li>Ancho de trabajo: 150 cm.</li>
                                         </ul>
-                                    </div>
-                                </details>
+                                </div>
                             </div>
                         </article>
 
@@ -763,7 +774,7 @@
                     if (show) visible.push(it);
                 });
                 // orden
-                const dir = sort.value;
+                const dir = sort ? sort.value : 'az';
                 visible.sort((a, b) => {
                     const A = a.querySelector('h3').textContent.trim().toLowerCase();
                     const B = b.querySelector('h3').textContent.trim().toLowerCase();
@@ -795,7 +806,7 @@
                 btn.addEventListener('click', () => { state.sys = btn.dataset.sys; syncUI(); setURL(); apply(); });
             });
             q.addEventListener('input', () => { state.query = q.value.trim(); setURL(); apply(); });
-            sort.addEventListener('change', () => apply());
+            if (sort) sort.addEventListener('change', () => apply());
 
             // Back/forward
             window.addEventListener('popstate', (e) => {
@@ -818,20 +829,27 @@
             alert(link.dataset.msg || 'Sección en construcción.');
         });
     </script>
-<script>
-  document.querySelectorAll('.card[data-name]').forEach((card) => {
-    const slug = card.dataset.name;
-    if (!slug) return;
-
-    card.style.cursor = 'pointer';
-
-    card.addEventListener('click', (e) => {
-      const clickedInteractive = e.target.closest('a, button, summary');
-      if (clickedInteractive) return;
-
-      window.open(`producto.html?slug=${slug}`, '_blank');
-    });
-  });
-</script>
+<!-- Modal de especificaciones -->
+<div class="pmodal-overlay" id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pmodal-title" hidden>
+    <div class="pmodal">
+        <button class="pmodal__close" id="pmodal-close" aria-label="Cerrar">&#x2715;</button>
+        <div class="pmodal__header">
+            <span class="pmodal__kicker" id="pmodal-kicker"></span>
+            <h2 class="pmodal__title" id="pmodal-title"></h2>
+            <div class="pmodal__tags" id="pmodal-tags"></div>
+        </div>
+        <div class="pmodal__body">
+            <div class="pmodal__gallery">
+                <img id="pmodal-img" src="" alt="">
+            </div>
+            <div class="pmodal__info">
+                <p class="pmodal__meta" id="pmodal-meta"></p>
+                <p class="pmodal__specs-heading">Especificaciones</p>
+                <ul class="pmodal__specs" id="pmodal-specs"></ul>
+                <div class="pmodal__actions" id="pmodal-actions"></div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

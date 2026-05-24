@@ -129,7 +129,7 @@
 
 
             <!-- GRID de 3 productos -->
-            <div class="grid products" style="grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
+            <div class="grid products">
 
                 <!-- L7 -->
                 <article class="card" data-name="l7" data-seg="desplazable">
@@ -137,20 +137,18 @@
                         <img src="img/L7.png" alt="Trituradora desplazable L7" loading="lazy">
                     </figure>
                     <div class="card__body">
+                        <div class="tags"><span class="tag">DESPLAZABLE</span><span class="tag">80–160 CV</span></div>
                         <h3>L7 <span class="tag">Desplazable</span> <span class="tag">80–160&nbsp;CV</span></h3>
                         <p class="meta">Potente y precisa para mantenimiento en cunetas y bordes.</p>
 
-                        <details class="more-info">
-                            <summary>Más información</summary>
-                            <div class="more-info__content">
+                        <div class="card__specs-data" hidden>
                                 <ul class="specs">
                                     <li>Trituradora desplazable para tractores de <strong>80–160&nbsp;CV</strong>.</li>
                                     <li>Inclinación hidráulica de <strong>+90° a −65°</strong>.</li>
                                     <li>Desplazamiento lateral hidráulico de <strong>99&nbsp;cm</strong>.</li>
                                     <li>Tritura <strong>hierba y ramas hasta 7&nbsp;cm Ø</strong>.</li>
                                 </ul>
-                            </div>
-                        </details>
+                        </div>
                     </div>
                     <div class="card__footer">
                         <a class="btn btn--secondary" href="index.html#contacto">Solicitar información</a>
@@ -163,20 +161,18 @@
                         <img src="img/S7.png" alt="Trituradora desplazable S7 AVS" loading="lazy">
                     </figure>
                     <div class="card__body">
+                        <div class="tags"><span class="tag">DESPLAZABLE</span><span class="tag">50–120 CV</span></div>
                         <h3>S7 AVS <span class="tag">Desplazable</span> <span class="tag">50–120&nbsp;CV</span></h3>
                         <p class="meta">Robusta y versátil para trabajo continuo en posiciones inclinadas.</p>
 
-                        <details class="more-info">
-                            <summary>Más información</summary>
-                            <div class="more-info__content">
+                        <div class="card__specs-data" hidden>
                                 <ul class="specs">
                                     <li>Trituradora desplazable para tractores de <strong>50–120&nbsp;CV</strong>.</li>
                                     <li>Tritura <strong>hierba y ramas hasta 7&nbsp;cm Ø</strong>.</li>
                                     <li>Orientación hidráulica de <strong>+90° a −50°</strong>.</li>
                                     <li>Desplazamiento lateral <strong>hidráulico</strong> para mayor alcance.</li>
                                 </ul>
-                            </div>
-                        </details>
+                        </div>
                     </div>
                     <div class="card__footer">
                         <a class="btn btn--secondary" href="index.html#contacto">Solicitar información</a>
@@ -189,20 +185,18 @@
                         <img src="img/sw.png" alt="Trituradora desplazable SMWA AVS" loading="lazy">
                     </figure>
                     <div class="card__body">
+                        <div class="tags"><span class="tag">DESPLAZABLE</span><span class="tag">40–90 CV</span></div>
                         <h3>SMWA AVS <span class="tag">Desplazable</span> <span class="tag">40–90&nbsp;CV</span></h3>
                         <p class="meta">Compacta para tractores pequeños; excepcionalmente versátil.</p>
 
-                        <details class="more-info">
-                            <summary>Más información</summary>
-                            <div class="more-info__content">
+                        <div class="card__specs-data" hidden>
                                 <ul class="specs">
                                     <li>Trituradora desplazable para tractores de <strong>40–90&nbsp;CV</strong>.</li>
                                     <li>Desplazamiento máximo de <strong>136&nbsp;cm</strong>.</li>
                                     <li>Tritura <strong>hierba y arbustos hasta 5&nbsp;cm Ø</strong>.</li>
                                     <li>Inclinación de <strong>+90°</strong> (arriba) a <strong>−50°</strong> (abajo).</li>
                                 </ul>
-                            </div>
-                        </details>
+                        </div>
                     </div>
                     <div class="card__footer">
                         <a class="btn btn--secondary" href="index.html#contacto">Solicitar información</a>
@@ -272,23 +266,29 @@
 
     <script src="script.js"></script>
     <script>
-        // Año dinámico
         const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     </script>
-    <script>
-  document.querySelectorAll('.card[data-name]').forEach((card) => {
-    const slug = card.dataset.name;
-    if (!slug) return;
-
-    card.style.cursor = 'pointer';
-
-    card.addEventListener('click', (e) => {
-      const clickedInteractive = e.target.closest('a, button, summary');
-      if (clickedInteractive) return;
-
-      window.open(`producto.html?slug=${slug}`, '_blank');
-    });
-  });
-</script>
+    <!-- Modal de especificaciones -->
+    <div class="pmodal-overlay" id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pmodal-title" hidden>
+        <div class="pmodal">
+            <button class="pmodal__close" id="pmodal-close" aria-label="Cerrar">&#x2715;</button>
+            <div class="pmodal__header">
+                <span class="pmodal__kicker" id="pmodal-kicker"></span>
+                <h2 class="pmodal__title" id="pmodal-title"></h2>
+                <div class="pmodal__tags" id="pmodal-tags"></div>
+            </div>
+            <div class="pmodal__body">
+                <div class="pmodal__gallery">
+                    <img id="pmodal-img" src="" alt="">
+                </div>
+                <div class="pmodal__info">
+                    <p class="pmodal__meta" id="pmodal-meta"></p>
+                    <p class="pmodal__specs-heading">Especificaciones</p>
+                    <ul class="pmodal__specs" id="pmodal-specs"></ul>
+                    <div class="pmodal__actions" id="pmodal-actions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

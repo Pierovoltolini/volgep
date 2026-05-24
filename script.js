@@ -493,6 +493,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Toggle del submenú con la flechita (mobile)
+/* ===== MODAL DE ESPECIFICACIONES (catálogo) ===== */
+(function () {
+    const overlay = document.getElementById('pmodal');
+    if (!overlay) return;
+
+    const closeBtn = document.getElementById('pmodal-close');
+    const imgEl = document.getElementById('pmodal-img');
+    const kickerEl = document.getElementById('pmodal-kicker');
+    const titleEl = document.getElementById('pmodal-title');
+    const tagsEl = document.getElementById('pmodal-tags');
+    const metaEl = document.getElementById('pmodal-meta');
+    const specsEl = document.getElementById('pmodal-specs');
+    const actionsEl = document.getElementById('pmodal-actions');
+
+    let lastFocused = null;
+
+    function openModal(card) {
+        lastFocused = document.activeElement;
+
+        const img = card.querySelector('img');
+        imgEl.src = img ? img.getAttribute('src') : '';
+        imgEl.alt = img ? (img.getAttribute('alt') || '') : '';
+
+        const h3 = card.querySelector('h3');
+        const h3clone = h3 ? h3.cloneNode(true) : null;
+        if (h3clone) h3clone.querySelectorAll('.tag, .badge').forEach(el => el.remove());
+        const titleText = h3clone ? h3clone.textContent.trim() : '';
+        titleEl.textContent = titleText;
+
+        const catLabels = [];
+        if (card.dataset.cat) catLabels.push(card.dataset.cat.charAt(0).toUpperCase() + card.dataset.cat.slice(1));
+        if (card.dataset.sys) catLabels.push(card.dataset.sys === 'hidraulica' ? 'Hidráulica' : card.dataset.sys.toUpperCase());
+        if (card.dataset.seg) catLabels.push(card.dataset.seg.charAt(0).toUpperCase() + card.dataset.seg.slice(1));
+        kickerEl.textContent = catLabels.length ? catLabels.join(' · ') : 'VolGep';
+
+        const tags = [...new Set([...card.querySelectorAll('.tag')].map(t => t.textContent.trim()).filter(Boolean))];
+        tagsEl.innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+        const metaNode = card.querySelector('.meta');
+        metaEl.textContent = metaNode ? metaNode.textContent.trim() : '';
+
+        const specItems = [...card.querySelectorAll('.card__specs-data li, .specs li, .more-info__content li')];
+        const uniqueSpecs = [...new Set(specItems.map(li => li.textContent.trim()).filter(Boolean))];
+        specsEl.innerHTML = uniqueSpecs.map(s => `<li>${s}</li>`).join('');
+
+        const slug = card.dataset.name;
+        const waText = encodeURIComponent('Hola, me interesa el producto ' + titleText + '. Quisiera más información.');
+        actionsEl.innerHTML =
+            '<a class="btn btn--primary" href="https://wa.me/59892825972?text=' + waText + '" target="_blank" rel="noopener">Consultar por WhatsApp</a>' +
+            (slug ? '<a class="btn btn--secondary" href="producto.html?slug=' + slug + '">Ver producto completo</a>' : '');
+
+        overlay.removeAttribute('hidden');
+        requestAnimationFrame(() => overlay.classList.add('is-open'));
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+    }
+
+    function closeModal() {
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        setTimeout(function () { overlay.setAttribute('hidden', ''); }, 240);
+        if (lastFocused) lastFocused.focus();
+    }
+
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        const card = e.target.closest('.card[data-name], .procard[data-name], .port-card[data-name]');
+        if (!card) return;
+        openModal(card);
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+    });
+})();
+
     document.querySelectorAll('.submenu-toggle').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();

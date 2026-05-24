@@ -29,7 +29,7 @@
   <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="VolGep – Maquinaria profesional para agro y forestación" />
@@ -138,17 +138,132 @@
   }
   </script>
 
-  <!-- Mini estilos para chapitas de categoría (pueden ir en estilos.css si querés) -->
   <style>
-    .badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.02em;padding:.25rem .55rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.18);margin-left:.35rem}
-    .badge--red{background:#2a1111;border-color:#6d2424}
-    .badge--yellow{background:#2a2411;border-color:#6d5f24}
-    .badge--blue{background:#111b2a;border-color:#244b6d}
-    .legend{display:flex;gap:.6rem;flex-wrap:wrap}
-    .legend span{background:#141a26;border:1px solid #26324a;border-radius:.5rem;padding:.25rem .5rem;font-size:.82rem;color:#a7b0c0}
-    .grid.cols-3{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .section--accent{background:linear-gradient(180deg,#111521,#0f1115)}
-    .tagline{color:var(--muted)}
+    /* ── Reset + Fuentes ── */
+    *{box-sizing:border-box}
+    body{font-family:'Barlow',sans-serif !important}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif !important;font-weight:300 !important}
+
+    /* ── Ocultar wave-seps ── */
+    .wave-sep{display:none !important}
+
+    /* ── Container a ancho completo en secciones fullbleed ── */
+    .productos-intro .container,.faq-section .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+    /* ── HERO ── */
+    .hero{padding:5rem 0 4rem !important;border-bottom:1px solid #e8e8e8 !important;background:#fff !important}
+    .hero__inner{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4rem !important;align-items:center !important}
+    .hero__copy h1{font-size:3.8rem !important;line-height:1.08 !important;color:#111 !important;margin:0 0 1.25rem !important}
+    .hero__copy .tagline{font-size:1rem !important;color:#555 !important;line-height:1.8 !important;margin-bottom:2rem !important;font-weight:400 !important}
+    .hero__cta{display:flex !important;gap:1rem !important;flex-wrap:wrap !important;margin-bottom:2rem !important}
+    .hero__bullets{list-style:none !important;padding:0 !important;margin:0 !important;display:flex !important;flex-direction:column !important;gap:.5rem !important}
+    .hero__bullets li{font-size:.8rem !important;letter-spacing:.1em !important;text-transform:uppercase !important;color:#888 !important;padding-left:1rem !important;position:relative !important}
+    .hero__bullets li::before{content:'—' !important;position:absolute !important;left:0 !important;color:#bbb !important}
+    .hero__media{overflow:hidden !important}
+    .hero__media img{width:100% !important;height:520px !important;object-fit:cover !important;display:block !important}
+
+    /* ── NOSOTROS ── */
+    .nos-section{padding:5rem 0 !important;border-bottom:1px solid #e8e8e8 !important;background:#fff !important}
+    .nos-inner{display:grid !important;grid-template-columns:1fr 2fr !important;gap:4rem !important;align-items:start !important}
+    .nos-kicker{font-size:.72rem !important;letter-spacing:.2em !important;text-transform:uppercase !important;color:#aaa !important;margin-bottom:1rem !important;display:block !important;font-family:'Barlow',sans-serif !important}
+    .nos-heading{font-size:2.8rem !important;font-weight:300 !important;line-height:1.1 !important;color:#111 !important;margin:0 0 1rem !important}
+    .nos-heading em{color:#555 !important;font-style:italic !important}
+    .nos-body{font-size:.95rem !important;color:#555 !important;line-height:1.9 !important}
+    .nos-stat{margin-top:2.5rem !important;display:flex !important;gap:3rem !important}
+    .nos-stat__n{font-family:'Cormorant Garamond',serif !important;font-size:3rem !important;font-weight:300 !important;color:#111 !important;line-height:1 !important;display:block}
+    .nos-stat__label{font-size:.7rem !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:#aaa !important;margin-top:.25rem !important;display:block}
+
+    /* ── QUÉ OFRECEMOS ── */
+    .oferta-section{padding:5rem 0 !important;background:#f7f6f2 !important;border-bottom:1px solid #e8e8e8 !important}
+    .oferta-header{display:flex !important;justify-content:space-between !important;align-items:flex-end !important;margin-bottom:3rem !important;flex-wrap:wrap !important;gap:1rem !important}
+    .oferta-header h2{font-size:2.6rem !important;color:#111 !important;margin:0 !important}
+    .oferta-header p{font-size:.82rem !important;letter-spacing:.08em !important;text-transform:uppercase !important;color:#aaa !important;max-width:30ch !important;text-align:right !important;line-height:1.6 !important}
+    .oferta-grid{display:grid !important;grid-template-columns:repeat(3,1fr) !important;border-left:1px solid #ddd !important}
+    .oferta-card{padding:2.5rem 2rem !important;border-right:1px solid #ddd !important;border-bottom:1px solid #ddd !important;background:transparent !important;box-shadow:none !important;border-radius:0 !important}
+    .oferta-card__num{font-family:'Cormorant Garamond',serif !important;font-size:1rem !important;color:#bbb !important;margin-bottom:1.5rem !important;display:block !important}
+    .oferta-card h3{font-size:1.3rem !important;color:#111 !important;margin:0 0 1rem !important;line-height:1.25 !important}
+    .oferta-card ul{list-style:none !important;padding:0 !important;margin:0 !important;display:flex !important;flex-direction:column !important;gap:.5rem !important}
+    .oferta-card ul li{font-size:.84rem !important;color:#666 !important;line-height:1.6 !important;padding-left:.9rem !important;position:relative !important}
+    .oferta-card ul li::before{content:'›' !important;position:absolute !important;left:0 !important;color:#999 !important}
+
+    /* ── PRODUCTOS HOME ── */
+    .productos-intro{padding:5rem 0 !important;background:#111 !important;border-bottom:1px solid #222 !important}
+    .productos-intro__inner{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4rem !important;align-items:center !important}
+    .productos-intro__kicker{font-size:.72rem !important;letter-spacing:.2em !important;text-transform:uppercase !important;color:#666 !important;margin-bottom:1rem !important;display:block !important;font-family:'Barlow',sans-serif !important}
+    .productos-intro__heading{font-size:3rem !important;font-weight:300 !important;color:#fff !important;margin:0 0 1.25rem !important;line-height:1.1 !important;font-family:'Cormorant Garamond',serif !important}
+    .productos-intro__body{font-size:.92rem !important;color:#999 !important;line-height:1.85 !important;margin-bottom:2rem !important}
+    .productos-intro__btn{display:inline-block !important;background:transparent !important;color:#fff !important;border:1px solid #555 !important;padding:.75rem 2rem !important;font-size:.75rem !important;letter-spacing:.18em !important;text-transform:uppercase !important;text-decoration:none !important;font-family:'Barlow',sans-serif !important;border-radius:0 !important}
+    .productos-intro__btn:hover{background:#fff !important;color:#111 !important;border-color:#fff !important}
+    .productos-intro__img{height:400px !important;object-fit:cover !important;width:100% !important}
+
+    /* ── IMAGEN ── */
+    .seccion-imagen{line-height:0 !important;display:block !important}
+    .seccion-imagen img{width:100% !important;height:360px !important;object-fit:cover !important;display:block !important}
+
+    /* ── REPUESTOS ── */
+    .repuestos-section{padding:5rem 0 !important;background:#fff !important;border-bottom:1px solid #e8e8e8 !important}
+    .repuestos__inner{display:grid !important;grid-template-columns:1fr 1fr !important;gap:5rem !important;align-items:start !important}
+    .repuestos__content h2{font-size:2.8rem !important;color:#111 !important;margin:0 0 1rem !important}
+    .repuestos__content p{font-size:.92rem !important;color:#666 !important;line-height:1.85 !important;margin-bottom:1.5rem !important}
+    .repuestos__content ul{list-style:none !important;padding:0 !important;margin:0 0 2rem !important;display:flex !important;flex-direction:column !important;gap:.85rem !important}
+    .repuestos__content ul li{font-size:.88rem !important;color:#555 !important;padding-left:1.2rem !important;position:relative !important;line-height:1.6 !important}
+    .repuestos__content ul li::before{content:'—' !important;position:absolute !important;left:0 !important;color:#bbb !important}
+    .repuestos__side{background:#f7f6f2 !important;padding:2.5rem !important;display:flex !important;flex-direction:column !important;justify-content:center !important}
+    .repuestos__side-kicker{font-size:.7rem !important;letter-spacing:.15em !important;text-transform:uppercase !important;color:#aaa !important;margin-bottom:1.5rem !important;display:block !important}
+    .repuestos__tags{display:flex !important;flex-wrap:wrap !important;gap:.5rem !important}
+    .repuestos__tag{font-size:.72rem !important;letter-spacing:.1em !important;text-transform:uppercase !important;border:1px solid #d0d0d0 !important;padding:.35rem .7rem !important;color:#555 !important;background:#fff !important;border-radius:0 !important}
+
+    /* ── VIVERO ── */
+    .vivero-section{padding:5rem 0 !important;background:#f7f6f2 !important;border-bottom:1px solid #e8e8e8 !important}
+    .vivero__inner{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4rem !important;align-items:center !important}
+    .vivero__content h2{font-size:2.8rem !important;color:#111 !important;margin:0 0 1rem !important}
+    .vivero__content p,.vivero__content .section__lead{font-size:.92rem !important;color:#666 !important;line-height:1.85 !important;margin-bottom:2rem !important}
+    .vivero__media img{width:100% !important;height:380px !important;object-fit:cover !important;display:block !important}
+
+    /* ── FAQ ── */
+    .faq-section{padding:5rem 0 !important;background:#f7f6f2 !important;border-bottom:1px solid #e8e8e8 !important}
+    .faq-inner{display:grid !important;grid-template-columns:1fr 2fr !important;gap:5rem !important;align-items:start !important}
+    .faq-left h2{font-size:2.6rem !important;color:#111 !important;margin:0 !important;line-height:1.1 !important}
+    .faq-left p{font-size:.82rem !important;color:#aaa !important;letter-spacing:.06em !important;text-transform:uppercase !important;margin-top:1rem !important;line-height:1.6 !important}
+    .faq-list{display:flex !important;flex-direction:column !important}
+    details.faq-item{border-bottom:1px solid #ddd !important;padding:0 !important;background:transparent !important}
+    details.faq-item summary{display:flex !important;justify-content:space-between !important;align-items:center !important;padding:1.4rem 0 !important;cursor:pointer !important;font-family:'Cormorant Garamond',serif !important;font-size:1.2rem !important;font-weight:300 !important;color:#111 !important;list-style:none !important;gap:1rem !important}
+    details.faq-item summary::-webkit-details-marker{display:none !important}
+    details.faq-item summary::after{content:'+';font-family:'Barlow',sans-serif;font-size:1.2rem;color:#bbb;flex-shrink:0}
+    details.faq-item[open] summary::after{content:'−';color:#111}
+    details.faq-item p{color:#666 !important;font-size:.9rem !important;line-height:1.85 !important;padding-bottom:1.5rem !important;margin:0 !important}
+
+    /* ── BTNS globales override ── */
+    .btn--primary{border-radius:0 !important;font-family:'Barlow',sans-serif !important;font-size:.75rem !important;letter-spacing:.18em !important;text-transform:uppercase !important;padding:.75rem 2rem !important;background:#1a1a1a !important;color:#fff !important;border-color:#1a1a1a !important}
+    .btn--primary:hover{background:#333 !important;border-color:#333 !important}
+    .btn--ghost{border-radius:0 !important;font-family:'Barlow',sans-serif !important;font-size:.75rem !important;letter-spacing:.18em !important;text-transform:uppercase !important;padding:.75rem 2rem !important;background:transparent !important;border:1px solid #555 !important;color:#eee !important}
+    .btn--ghost:hover{background:#fff !important;color:#111 !important;border-color:#fff !important}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:860px){
+      .hero__inner{grid-template-columns:1fr !important}
+      .hero__copy h1{font-size:2.4rem !important}
+      .hero__media img{height:300px !important}
+      .nos-inner{grid-template-columns:1fr !important}
+      .vivero__inner{grid-template-columns:1fr !important}
+      .repuestos__inner{grid-template-columns:1fr !important}
+      .faq-inner{grid-template-columns:1fr !important;gap:2.5rem !important}
+      .productos-intro__inner{grid-template-columns:1fr !important}
+      .productos-intro__img{height:240px !important}
+    }
+    @media(max-width:700px){
+      .oferta-grid{grid-template-columns:1fr !important}
+      .oferta-header p{text-align:left !important}
+      .hero__copy h1{font-size:2rem !important}
+      .nos-heading,.repuestos__content h2,.vivero__content h2,.faq-left h2{font-size:1.9rem !important}
+      .productos-intro__heading{font-size:2rem !important}
+      .seccion-imagen img{height:200px !important}
+    }
+    @media(max-width:480px){
+      .hero{padding:2.5rem 0 2rem !important}
+      .hero__copy h1{font-size:1.7rem !important}
+      .nos-section,.oferta-section,.repuestos-section,.vivero-section,.faq-section,.productos-intro{padding:3rem 0 !important}
+    }
   </style>
 </head>
 
@@ -264,10 +379,9 @@
             <div class="container hero__inner">
                 <div class="hero__copy">
                     <h1 id="hero-title">Maquinaria profesional para agro, forestación y espacios verdes</h1>
-                    <p class="tagline">Trituradoras forestales y de piedra — versiones <strong>PTO</strong> para tractores e <strong>hidráulicas</strong> para excavadoras y otras unidades. Experiencia real de campo y servicio postventa.</p>
+                    <p class="tagline">Trituradoras forestales y de piedra — versiones <strong>PTO</strong> para tractores e <strong>hidráulicas</strong> para excavadoras. Experiencia real de campo y servicio postventa.</p>
                     <div class="hero__cta">
                         <a class="btn btn--primary" href="#" id="openProductos">Ver líneas</a>
-
                         <a class="btn btn--ghost" href="#contacto">Pedir asesoramiento</a>
                     </div>
                     <ul class="hero__bullets" aria-label="Diferenciales">
@@ -277,73 +391,69 @@
                     </ul>
                 </div>
                 <div class="hero__media">
-                    <center> <img src="img/maquina1.jpeg" alt="Trituradora trabajando en el campo" loading="lazy"></center>
+                    <img src="img/maquina1.jpeg" alt="Trituradora trabajando en el campo" loading="lazy">
                 </div>
             </div>
         </section>
-        <div class="wave-sep" aria-hidden="true">
-            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
-            </svg>
-        </div>
 
         <!-- NOSOTROS -->
-        <section id="nosotros" class="section section--light" aria-labelledby="nos-title">
-            <div class="container">
-                <h2 id="nos-title">VolGep: experiencia + visión técnica</h2>
-                <p>VolGep surge como una propuesta que combina experiencia y visión de futuro. Con el respaldo de más de 30 años de trayectoria en el sector, la empresa se especializa en la importación y distribución de maquinaria de alto rendimiento para la agricultura, la forestación y el mantenimiento de espacios productivos y públicos.</p>
-
+        <section id="nosotros" class="section--light nos-section" aria-labelledby="nos-title">
+            <div class="container nos-inner">
+                <div>
+                    <span class="nos-kicker">Sobre nosotros</span>
+                    <h2 class="nos-heading" id="nos-title">Experiencia<br><em>+ visión técnica</em></h2>
+                    <div class="nos-stat">
+                        <div class="nos-stat__item">
+                            <div class="nos-stat__n">30+</div>
+                            <div class="nos-stat__label">Años de trayectoria</div>
+                        </div>
+                        <div class="nos-stat__item">
+                            <div class="nos-stat__n">UY</div>
+                            <div class="nos-stat__label">Cobertura nacional</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="nos-body">VolGep surge como una propuesta que combina experiencia y visión de futuro. Con el respaldo de más de 30 años de trayectoria en el sector, la empresa se especializa en la importación y distribución de maquinaria de alto rendimiento para la agricultura, la forestación y el mantenimiento de espacios productivos y públicos.</p>
+                </div>
             </div>
         </section>
 
-        <div class="wave-sep" aria-hidden="true">
-            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
-            </svg>
-        </div>
-
         <!-- QUÉ OFRECEMOS -->
-        <section id="oferta" class="section" aria-labelledby="off-title">
+        <section id="oferta" class="oferta-section" aria-labelledby="off-title">
             <div class="container">
-                <h2 id="off-title">Qué ofrecemos</h2>
-                <p class="section__lead">Maquinaria profesional de alto rendimiento para agricultura, silvicultura y mantenimiento de espacios verdes.</p>
-
-                <div class="grid">
-                    <article class="feature">
+                <div class="oferta-header">
+                    <h2 id="off-title">Qué ofrecemos</h2>
+                    <p>Maquinaria profesional de alto rendimiento para agricultura, silvicultura y mantenimiento de espacios verdes.</p>
+                </div>
+                <div class="oferta-grid">
+                    <div class="oferta-card">
+                        <span class="oferta-card__num">01</span>
                         <h3>Trituradoras de martillos y cuchillas</h3>
                         <ul>
                             <li>Mantenimiento de frutales y viñedos</li>
-                            <li>Campo abierto y grandes superficies (aeropuertos, parques)</li>
-                            <li>Zonas complejas: pendientes, banquinas, ferrovías, cauces</li>
+                            <li>Campo abierto y grandes superficies</li>
+                            <li>Pendientes, banquinas, ferrovías, cauces</li>
                         </ul>
-                    </article>
-                    <article class="feature">
+                    </div>
+                    <div class="oferta-card">
+                        <span class="oferta-card__num">02</span>
                         <h3>Equipos forestales robustos</h3>
                         <ul>
                             <li>Trituración de arbustos y árboles de gran porte</li>
-                            <li>Fresado profundo de suelo para preparación forestal</li>
-                            <li>Reforestación, limpieza de montes y apertura de picadas</li>
+                            <li>Fresado profundo para preparación forestal</li>
+                            <li>Reforestación y apertura de picadas</li>
                         </ul>
-                    </article>
-                    <article class="feature">
-                        <h3>Trituradoras de piedra y soluciones hidráulicas</h3>
-                        <ul>
-                            <li>Toma de fuerza <strong>(PTO)</strong> para tractores</li>
-                            <li>Versiones <strong>hidráulicas</strong> para excavadoras y otras unidades</li>
-                            <li>Resultados consistentes, seguridad operativa y eficiencia comprobada</li>
-                        </ul>
-                    </article>
-                </div>
-
-                <div class="cta-strip" role="region" aria-label="Aclaraciones técnicas">
-                    <div class="legend" aria-label="Acrónimos">
-                        <span><strong>PTO</strong> = Toma de Fuerza</span>
-                        <span><strong>CL</strong> = Hidráulica</span>
-                        <span><strong>SOIL</strong> = Piedra</span>
-                        <span><strong>FORST</strong> = Forestal</span>
-                        <span><strong>PIERRE</strong> = Piedra</span>
                     </div>
-
+                    <div class="oferta-card">
+                        <span class="oferta-card__num">03</span>
+                        <h3>Trituradoras de piedra e hidráulicas</h3>
+                        <ul>
+                            <li>Toma de fuerza <strong>PTO</strong> para tractores</li>
+                            <li>Versiones <strong>hidráulicas</strong> para excavadoras</li>
+                            <li>Seguridad operativa y eficiencia comprobada</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -351,164 +461,175 @@
 
         <!-- LÍNEAS DE PRODUCTO -->
         <section id="productos-home" class="productos-intro">
-            <div class="container">
-                <h2>Nuestros productos</h2>
-                <p>
-                    En VolGep ofrecemos maquinaria profesional de alto rendimiento para la agricultura,
-                    la silvicultura y el mantenimiento de espacios verdes.
-                    Trituradoras forestales, trituradoras de piedra, soluciones hidráulicas y mucho más.
-                </p>
-                <a href="productos.html" class="btn btn--primary">Ver más productos</a>
+            <div class="container productos-intro__inner">
+                <div class="productos-intro__text">
+                    <span class="productos-intro__kicker">Nuestros productos</span>
+                    <h2 class="productos-intro__heading">Equipos para cada desafío del campo</h2>
+                    <p class="productos-intro__body">Trituradoras forestales, de piedra, soluciones hidráulicas y mucho más. Maquinaria de alto rendimiento seleccionada para las condiciones reales del agro uruguayo.</p>
+                    <a href="productos.html" class="productos-intro__btn">Ver catálogo completo</a>
+                </div>
+                <img src="img/trituradora.jpeg" alt="Trituradora agrícola VolGep" class="productos-intro__img" loading="lazy">
             </div>
-        </section> </p>
-        <!-- FOTO INTERMEDIA -->
-        <section class="seccion-imagen">
-            <img src="img/trituradora.jpeg" alt="Trituradora agrícola">
         </section>
 
-        <div class="wave-sep" aria-hidden="true">
-            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
-            </svg>
-        </div>
+        <!-- FOTO INTERMEDIA -->
+        <section class="seccion-imagen" aria-hidden="true">
+            <img src="img/video8_poster.jpeg" alt="Trabajo en campo con maquinaria VolGep">
+        </section>
 
         <!-- REPUESTOS -->
-        <section id="repuestos" class="section" aria-labelledby="rep-title">
+        <section id="repuestos" class="repuestos-section" aria-labelledby="rep-title">
             <div class="container repuestos__inner">
                 <div class="repuestos__content">
                     <h2 id="rep-title">Repuestos</h2>
-                    <p>
-                        Ofrecemos un amplio stock de piezas para toda nuestra línea de equipos agrícolas y forestales, asegurando:
-                    </p>
+                    <p>Stock de piezas para toda nuestra línea de equipos agrícolas y forestales, con entrega ágil en todo el país.</p>
                     <ul>
-                        <li><strong>Disponibilidad inmediata</strong> de repuestos críticos.</li>
-                        <li><strong>Repuestos originales y alternativos certificados</strong>, garantizando calidad y durabilidad.</li>
-                        <li><strong>Asesoramiento técnico</strong> para identificar la pieza adecuada según el modelo.</li>
-                        <li><strong>Logística ágil en todo el país</strong>, con envíos rápidos a campo o taller.</li>
+                        <li><strong>Disponibilidad inmediata</strong> de repuestos críticos</li>
+                        <li><strong>Originales y alternativos certificados</strong>, calidad garantizada</li>
+                        <li><strong>Asesoramiento técnico</strong> para identificar la pieza adecuada</li>
+                        <li><strong>Logística ágil en todo el país</strong>, envíos a campo o taller</li>
                     </ul>
-                    <div class="hero__cta" style="margin-top:1rem">
-                        <a class="btn btn--primary" href="#contacto">Solicitar repuesto</a>
+                    <a class="btn btn--primary" href="#contacto">Solicitar repuesto</a>
+                </div>
+                <div class="repuestos__side">
+                    <span class="repuestos__side-kicker">Líneas disponibles</span>
+                    <div class="repuestos__tags">
+                        <span class="repuestos__tag">Forestal PTO</span>
+                        <span class="repuestos__tag">Forestal Hidráulica</span>
+                        <span class="repuestos__tag">Piedra PTO</span>
+                        <span class="repuestos__tag">Piedra Hidráulica</span>
+                        <span class="repuestos__tag">Desplazables L7</span>
+                        <span class="repuestos__tag">S7 AVS</span>
+                        <span class="repuestos__tag">SMWA AVS</span>
+                        <span class="repuestos__tag">Accesorios</span>
+                        <span class="repuestos__tag">Coldkiller</span>
                     </div>
                 </div>
-
             </div>
         </section>
-
-
-
-
-
-        <div class="wave-sep" aria-hidden="true">
-            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
-            </svg>
-        </div>
-
-
-        <!-- VIVERO Y SERVICIOS -->
-        <section id="vivero" class="section" aria-labelledby="viv-title">
+<!-- VIVERO Y SERVICIOS -->
+        <section id="vivero" class="vivero-section" aria-labelledby="viv-title">
             <div class="container vivero__inner">
-
                 <div class="vivero__content">
-                    <h2 id="viv-title">Vivero y servicios</h2>
-                    <p class="section__lead">
-                        Para soluciones integrales en forestación y servicios complementarios, visitá nuestro sitio aliado.
-                    </p>
-                    <a class="btn btn--primary" href="https://gvserviciosforestales.com"
-                       target="_blank" rel="noopener noreferrer">Ir a gvserviciosforestales.com</a>
+                    <h2 id="viv-title">Vivero<br><em>y servicios</em></h2>
+                    <p class="section__lead">Para soluciones integrales en forestación y servicios complementarios, visitá nuestro sitio aliado.</p>
+                    <a class="btn btn--primary" href="https://gvserviciosforestales.com" target="_blank" rel="noopener noreferrer">Ir a gvserviciosforestales.com</a>
                 </div>
-
                 <div class="vivero__media">
-                    <img src="img/vivero.jpg" alt="Vivero y servicios" loading="lazy">
+                    <img src="img/vivero.jpg" alt="Vivero y servicios forestales" loading="lazy">
                 </div>
             </div>
         </section>
-
-        <div class="wave-sep" aria-hidden="true">
-            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0,24 C240,60 480,0 720,24 C960,48 1200,12 1440,36 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
-            </svg>
-        </div>
-        <!-- FAQ (igual estructura) -->
-        <section id="faq" class="section section--light" aria-labelledby="faq-title">
-            <div class="container">
-                <h2 id="faq-title">Preguntas frecuentes</h2>
-                <details>
-                    <summary>¿Trabajan en  todo el país?</summary>
-                    <p>Sí, coordinamos entregas e instalaciones a nivel nacional con logística eficiente.</p>
-                </details>
-                <details>
-                    <summary>¿PTO o hidráulica? ¿Cómo elijo?</summary>
-                    <p>Depende del equipo disponible (tractor/excavadora), el tipo de trabajo (piedra vs forestal) y la profundidad/caudal requeridos. Te asesoramos según tu caso.</p>
-                </details>
-                <details>
-                    <summary>¿Hacen servicio postventa?</summary>
-                    <p>Sí. Repuestos, ajustes y soporte técnico. Nuestro enfoque es que el equipo produzca, seguro y con tiempos de parada mínimos.</p>
-                </details>
+<!-- FAQ -->
+        <section id="faq" class="faq-section" aria-labelledby="faq-title">
+            <div class="container faq-inner">
+                <div class="faq-left">
+                    <h2 id="faq-title">Preguntas<br>frecuentes</h2>
+                    <p>Todo lo que necesitás saber antes de elegir tu equipo.</p>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>¿Trabajan en todo el país?</summary>
+                        <p>Sí, coordinamos entregas e instalaciones a nivel nacional con logística eficiente.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿PTO o hidráulica? ¿Cómo elijo?</summary>
+                        <p>Depende del equipo disponible (tractor/excavadora), el tipo de trabajo (piedra vs forestal) y la profundidad/caudal requeridos. Te asesoramos según tu caso.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Hacen servicio postventa?</summary>
+                        <p>Sí. Repuestos, ajustes y soporte técnico. Nuestro enfoque es que el equipo produzca, seguro y con tiempos de parada mínimos.</p>
+                    </details>
+                </div>
             </div>
         </section>
 
         <!-- CONTACTO -->
-        <section id="contacto" class="section section--light" aria-labelledby="contact-title">
-            <div class="container">
-                <h2 id="contact-title">Contacto y cotizaciones</h2>
-                <p>Contanos tu necesidad (forestal / piedra, PTO / hidráulica) y el equipo con el que contás (tractor, excavadora, etc.).</p>
-
-                <form class="formulario-volfer"
-                      action="https://formsubmit.co/infovolgep@gmail.com"
-                      method="POST"
-                      enctype="multipart/form-data"
-                      aria-label="Formulario de contacto">
-                    <div class="form__row">
-                        <label for="nombre">Nombre y apellido *</label>
-                        <input id="nombre" name="nombre" type="text" required autocomplete="name">
-                    </div>
-
-                    <div class="form__row">
-                        <label for="email">Email *</label>
-                        <input id="email" name="email" type="email" required autocomplete="email">
-                    </div>
-
-                    <div class="form__row">
-                        <label for="telefono">Teléfono *</label>
-                        <input id="telefono" name="telefono" type="tel" required autocomplete="tel">
-                    </div>
-
-                    <div class="form__row">
-                        <label for="asunto">Asunto</label>
-                        <input id="asunto" name="asunto" type="text" placeholder="Forest • Piedra • PTO • Hidráulica">
-                    </div>
-
-                    <div class="form__row">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Uso previsto, superficie, equipo disponible, plazo, ubicación."></textarea>
-                    </div>
-
-                    <div class="form__row">
-                        <label for="archivo">Adjuntar archivo</label>
-                        <input id="archivo" name="archivo" type="file" accept=".jpg,.png,.pdf,.doc,.docx,.xlsx,.xls">
-                    </div>
-
-                    <!-- Opcionales de FormSubmit -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web VolGep">
-                    <input type="hidden" name="_template" value="table">
-                    <!-- Si querés redirigir a una página propia de gracias, descomentá y poné tu URL -->
-                    <!-- <input type="hidden" name="_next" value="https://volgep.com/gracias.html"> -->
-
-                    <div class="form__actions">
-                        <button type="submit" class="btn btn--primary">Enviar</button>
-                        <p class="form__disclaimer">Al enviar aceptás nuestra <a href="/politica-privacidad.html">política de privacidad</a>.</p>
-                    </div>
-                </form>
-
-                <address class="contact-data" aria-label="Datos de contacto">
-                    <ul>
-                        <li><strong>Email:</strong> <a href="mailto:infovolgep@gmail.com">infovolgep@gmail.com</a></li>
-                        <li>Uruguay</li>
-                    </ul>
-                </address>
+        <section id="contacto" aria-labelledby="contact-title">
+        <style>
+          .cz{display:grid;grid-template-columns:1fr 1.55fr;min-height:560px;border-top:1px solid #e0e0e0}
+          .cz__left{background:#111;color:#fff;padding:4rem 3rem;display:flex;flex-direction:column;justify-content:space-between}
+          .cz__kicker{font-family:'Barlow',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#888 !important;margin-bottom:1.2rem;display:block}
+          .cz__heading{font-family:'Cormorant Garamond','Plus Jakarta Sans',serif;font-size:3rem;font-weight:300;line-height:1.1;letter-spacing:.01em;margin:0 0 1.5rem;color:#fff !important}
+          .cz__heading em{font-style:italic;color:#ccc !important}
+          .cz__left *{color:inherit}
+          .cz__left h2,.cz__left h2 *{color:#fff !important}
+          .cz__left p{color:#999 !important}
+          .cz__lead{font-family:'Barlow','Plus Jakarta Sans',sans-serif;font-size:.88rem;color:#999 !important;line-height:1.75;letter-spacing:.03em;max-width:28ch}
+          .cz__info{margin-top:3rem}
+          .cz__info-line{display:flex;align-items:center;gap:.75rem;margin-bottom:1.1rem}
+          .cz__info-icon{width:36px;height:36px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+          .cz__info-icon svg{width:15px;height:15px;fill:#888 !important}
+          .cz__info-text{font-family:'Barlow',sans-serif;font-size:.82rem;color:#888 !important;letter-spacing:.05em}
+          .cz__info-text a{color:#ccc !important;text-decoration:none}
+          .cz__info-text a:hover{color:#fff !important}
+          .cz__divider{width:32px;height:1px;background:#333;margin:2.5rem 0}
+          .cz__right{background:#fafaf8;padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+          .cz__form-title{font-family:'Barlow',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#aaa;margin-bottom:2.5rem;display:block}
+          .cz-field{position:relative;margin-bottom:1.75rem}
+          .cz-field input,.cz-field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #d0d0d0;padding:.75rem 0 .5rem;font-family:'Barlow','Plus Jakarta Sans',sans-serif;font-size:.9rem;color:#1a1a1a;outline:none;transition:border-color .2s;resize:none;appearance:none}
+          .cz-field textarea{min-height:90px}
+          .cz-field label{position:absolute;top:.75rem;left:0;font-family:'Barlow',sans-serif;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:#aaa;pointer-events:none;transition:all .18s;transform-origin:left}
+          .cz-field input:focus,.cz-field textarea:focus{border-bottom-color:#1a1a1a}
+          .cz-field input:focus~label,.cz-field input:not(:placeholder-shown)~label,.cz-field textarea:focus~label,.cz-field textarea:not(:placeholder-shown)~label{top:-0.5rem;font-size:.65rem;color:#1a1a1a;letter-spacing:.12em}
+          .cz-field--file label{position:static;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#aaa;display:block;margin-bottom:.4rem}
+          .cz-field--file input[type="file"]{border-bottom:1px solid #e0e0e0;padding:.4rem 0;font-size:.78rem;color:#888;cursor:pointer}
+          .cz-row{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+          .cz__submit{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;flex-wrap:wrap;gap:1rem}
+          .cz__btn{background:#1a1a1a;color:#fff;border:none;padding:.85rem 2.5rem;font-family:'Barlow','Plus Jakarta Sans',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+          .cz__btn:hover{background:#333}
+          .cz__disclaimer{font-family:'Barlow',sans-serif;font-size:.72rem;color:#bbb;letter-spacing:.04em}
+          .cz__disclaimer a{color:#888;text-decoration:underline}
+          @media(max-width:860px){.cz{grid-template-columns:1fr}.cz__left{padding:3rem 1.75rem 2.5rem}.cz__heading{font-size:2.2rem}.cz__right{padding:2.5rem 1.75rem 3rem}.cz-row{grid-template-columns:1fr}}
+          @media(max-width:480px){.cz__left{padding:2.5rem 1.25rem 2rem}.cz__right{padding:2rem 1.25rem 2.5rem}.cz__heading{font-size:1.9rem}.cz__submit{flex-direction:column;align-items:stretch}.cz__btn{text-align:center}}
+        </style>
+          <div class="cz">
+            <div class="cz__left">
+              <div>
+                <span class="cz__kicker">VolGep — Uruguay</span>
+                <h2 class="cz__heading" id="contact-title">Hablemos<br><em>de tu proyecto</em></h2>
+                <div class="cz__divider"></div>
+                <p class="cz__lead">Contanos tu necesidad — forestal, piedra, PTO o hidráulica — y el equipo con el que contás. Te respondemos a la brevedad.</p>
+              </div>
+              <address class="cz__info" aria-label="Datos de contacto">
+                <div class="cz__info-line">
+                  <div class="cz__info-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+                  <span class="cz__info-text"><a href="mailto:infovolgep@gmail.com">infovolgep@gmail.com</a></span>
+                </div>
+                <div class="cz__info-line">
+                  <div class="cz__info-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg></div>
+                  <span class="cz__info-text"><a href="https://wa.me/59892825972">+598 92 825 972</a></span>
+                </div>
+                <div class="cz__info-line">
+                  <div class="cz__info-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+                  <span class="cz__info-text">Uruguay</span>
+                </div>
+              </address>
             </div>
+            <div class="cz__right">
+              <span class="cz__form-title">Formulario de contacto</span>
+              <form action="https://formsubmit.co/infovolgep@gmail.com" method="POST" enctype="multipart/form-data" aria-label="Formulario de contacto">
+                <div class="cz-row">
+                  <div class="cz-field"><input id="nombre" name="nombre" type="text" required autocomplete="name" placeholder=" "><label for="nombre">Nombre y apellido *</label></div>
+                  <div class="cz-field"><input id="telefono" name="telefono" type="tel" required autocomplete="tel" placeholder=" "><label for="telefono">Teléfono *</label></div>
+                </div>
+                <div class="cz-field"><input id="email" name="email" type="email" required autocomplete="email" placeholder=" "><label for="email">Email *</label></div>
+                <div class="cz-field"><input id="asunto" name="asunto" type="text" placeholder=" "><label for="asunto">Asunto — Forestal · Piedra · PTO · Hidráulica</label></div>
+                <div class="cz-field"><textarea id="mensaje" name="mensaje" rows="4" placeholder=" "></textarea><label for="mensaje">Mensaje — equipo disponible, superficie, plazo</label></div>
+                <div class="cz-field cz-field--file">
+                  <label for="archivo">Adjuntar archivo (opcional)</label>
+                  <input id="archivo" name="archivo" type="file" accept=".jpg,.png,.pdf,.doc,.docx,.xlsx,.xls">
+                </div>
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Nuevo mensaje desde la web VolGep">
+                <input type="hidden" name="_template" value="table">
+                <div class="cz__submit">
+                  <button type="submit" class="cz__btn">Enviar consulta</button>
+                  <p class="cz__disclaimer">Al enviar aceptás nuestra <a href="/politica-privacidad.html">política de privacidad</a>.</p>
+                </div>
+              </form>
+            </div>
+          </div>
         </section>
 
 
