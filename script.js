@@ -1030,3 +1030,26 @@ document.addEventListener('DOMContentLoaded', () => {
         openSubmenuMaquinarias();
     });
 });
+
+/* ================================================================
+   QUÉ OFRECEMOS — aparición escalonada al entrar en viewport
+   ================================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.oferta-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const card = entry.target;
+            const delay = Number(card.dataset.delay || 0);
+            setTimeout(() => card.classList.add('is-visible'), delay);
+            observer.unobserve(card);
+        });
+    }, { threshold: 0.15 });
+
+    cards.forEach((card, i) => {
+        card.dataset.delay = i * 180;
+        observer.observe(card);
+    });
+});

@@ -4789,8 +4789,14 @@ img[src*="botellacold"] {
   }
 
   body.accesorios .cards-2 {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 14px;
+  }
+
+  @media (max-width: 540px) {
+    body.accesorios .cards-2 {
+      grid-template-columns: 1fr !important;
+    }
   }
 
   body.accesorios .procard,
@@ -4873,8 +4879,279 @@ img[src*="botellacold"] {
     inset: auto 14px 14px auto;
   }
 }
-@media (max-width: 980px) {
+@media (max-width: 540px) {
   .cards-2 {
     grid-template-columns: 1fr;
   }
+}
+
+/* ================================================================
+   VOLGEP — DRAWER ZARA STYLE  (solo mobile ≤ 980 px)
+   + burger: barras 1 px, anima a X
+   ================================================================ */
+
+/* — Burguesa: 3 barras de 1 px, sin borde ni fondo — */
+.header__burger {
+    background: none   !important;
+    border: none       !important;
+    box-shadow: none   !important;
+    border-radius: 0   !important;
+    width: 44px        !important;
+    height: 44px       !important;
+    padding: 0         !important;
+    display: inline-flex   !important;
+    align-items: center    !important;
+    justify-content: center !important;
+    position: relative !important;
+    cursor: pointer    !important;
+    outline: none      !important;
+}
+
+.header__burger svg { display: none !important; }
+
+.header__burger::before,
+.header__burger::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+    width: 22px;
+    height: 1px;
+    background: var(--ink, #0C1A0C);
+    border-radius: 0;
+    transition:
+        top .28s cubic-bezier(.4,0,.2,1),
+        transform .28s cubic-bezier(.4,0,.2,1),
+        box-shadow .18s ease;
+}
+
+/* ::before = barra top + barra media vía box-shadow */
+.header__burger::before {
+    top: 14px;
+    box-shadow: 0 7px 0 var(--ink, #0C1A0C);
+}
+
+.header__burger::after {
+    top: 28px;
+}
+
+/* Estado abierto → X */
+.header__burger[aria-expanded="true"]::before {
+    top: 21px;
+    transform: rotate(45deg);
+    box-shadow: none;
+}
+
+.header__burger[aria-expanded="true"]::after {
+    top: 21px;
+    transform: rotate(-45deg);
+}
+
+/* ── DRAWER ── */
+@media (max-width: 980px) {
+
+    /* Panel lateral: blanco, sombra profunda */
+    .nav {
+        width: min(86vw, 360px) !important;
+        background: #ffffff !important;
+        border-right: none !important;
+        box-shadow: 6px 0 60px rgba(12,26,12,.22) !important;
+        padding-top: 68px !important;
+    }
+
+    /* Franja superior del drawer: "VOLGEP" como marca */
+    .nav::before {
+        content: "VOLGEP";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 68px;
+        line-height: 68px;
+        padding-left: 1.5rem;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .3em;
+        color: #0C1A0C;
+        background: #ffffff;
+        border-bottom: 1px solid rgba(12,26,12,.07);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Botón X: ocupa toda la franja a la derecha */
+    .nav__close {
+        position: absolute  !important;
+        top: 0              !important;
+        right: 0            !important;
+        width: 68px         !important;
+        height: 68px        !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.1rem   !important;
+        font-weight: 300    !important;
+        color: #0C1A0C      !important;
+        background: none    !important;
+        border: none        !important;
+        cursor: pointer     !important;
+        opacity: 1          !important;
+        z-index: 10         !important;
+        transition: color .15s ease !important;
+    }
+
+    .nav__close:hover { color: #1A7A38 !important; }
+
+    /* Lista: sin gaps, sin padding extra */
+    .nav ul {
+        flex-direction: column !important;
+        align-items: stretch   !important;
+        gap: 0                 !important;
+        padding: 0 0 3rem      !important;
+        margin: 0              !important;
+    }
+
+    /* Links de nivel 1: uppercase editorial, sin fondo en hover */
+    .nav a:not(.btn) {
+        font-size: .95rem      !important;
+        font-weight: 500       !important;
+        letter-spacing: .18em  !important;
+        text-transform: uppercase !important;
+        color: #0C1A0C         !important;
+        padding: 1.1rem 1.5rem !important;
+        border-bottom: 1px solid rgba(12,26,12,.06) !important;
+        border-radius: 0       !important;
+        background: transparent !important;
+        display: block         !important;
+        transition: color .15s ease !important;
+    }
+
+    .nav a:not(.btn):hover {
+        background: transparent !important;
+        color: #1A7A38         !important;
+    }
+
+    /* Links de submenú: indentados, más chicos */
+    .nav .nav__dropdown a {
+        font-size: .82rem      !important;
+        font-weight: 400       !important;
+        letter-spacing: .1em   !important;
+        color: #2E4A36         !important;
+        padding: .85rem 1.5rem .85rem 2.25rem !important;
+        border-bottom: 1px solid rgba(12,26,12,.04) !important;
+        border-radius: 0       !important;
+        background: transparent !important;
+    }
+
+    .nav .nav__dropdown a:hover {
+        color: #1A7A38         !important;
+        background: transparent !important;
+    }
+
+    /* Ocultar los bullets ● de los subitems */
+    .nav__dropdown .bullet { display: none !important; }
+
+    /* CTA Contacto: botón negro de borde completo */
+    .nav a.btn,
+    .nav a.btn--primary {
+        display: block         !important;
+        margin: 1.5rem 1.5rem 0 !important;
+        padding: .9rem 1.5rem  !important;
+        width: calc(100% - 3rem) !important;
+        text-align: center     !important;
+        font-size: .72rem      !important;
+        letter-spacing: .2em   !important;
+        font-weight: 600       !important;
+        background: #0C1A0C   !important;
+        color: #fff            !important;
+        border: none           !important;
+        border-radius: 2px     !important;
+        border-bottom: none    !important;
+    }
+
+    .nav a.btn:hover,
+    .nav a.btn--primary:hover {
+        background: #1A7A38   !important;
+        color: #fff           !important;
+    }
+
+    /* Stagger: fade-up suave */
+    @keyframes nav-item-zara {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav.nav--open li {
+        animation: nav-item-zara .3s ease both !important;
+    }
+
+    .nav.nav--open li:nth-child(1) { animation-delay: .04s !important; }
+    .nav.nav--open li:nth-child(2) { animation-delay: .08s !important; }
+    .nav.nav--open li:nth-child(3) { animation-delay: .12s !important; }
+    .nav.nav--open li:nth-child(4) { animation-delay: .16s !important; }
+    .nav.nav--open li:nth-child(5) { animation-delay: .20s !important; }
+    .nav.nav--open li:nth-child(6) { animation-delay: .24s !important; }
+    .nav.nav--open li:nth-child(7) { animation-delay: .28s !important; }
+
+    /* Scrim: tono más presente, sin blur */
+    .nav__scrim {
+        background: rgba(12,26,12,.30)      !important;
+        backdrop-filter: none               !important;
+        -webkit-backdrop-filter: none       !important;
+    }
+}
+
+/* ================================================================
+   FIX: botón "Pedir asesoramiento" (btn--ghost) legible en hero
+   El inline <style> de index.html tenía color:#eee sobre fondo blanco
+   Mayor especificidad (.hero .btn--ghost vs .btn--ghost) resuelve
+   ================================================================ */
+.hero .btn--ghost {
+    color: #1a1a1a          !important;
+    border-color: #1a1a1a   !important;
+    background: transparent !important;
+}
+
+.hero .btn--ghost:hover {
+    background: #1a1a1a     !important;
+    color: #fff             !important;
+    border-color: #1a1a1a   !important;
+}
+
+/* ================================================================
+   QUÉ OFRECEMOS — títulos bilineales estilo editorial
+   ================================================================ */
+.oferta-card h3 {
+    font-size: 1.55rem  !important;
+    font-weight: 700    !important;
+    line-height: 1.1    !important;
+    letter-spacing: -.02em !important;
+    color: #111         !important;
+    margin: 0 0 1.1rem  !important;
+}
+
+.oferta-card h3 em {
+    display: block;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: #888;
+    letter-spacing: .01em;
+    margin-top: .1rem;
+}
+
+/* ================================================================
+   QUÉ OFRECEMOS — animación de entrada escalonada al hacer scroll
+   ================================================================ */
+.oferta-card {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+        opacity .55s cubic-bezier(.22,.68,0,1.08),
+        transform .55s cubic-bezier(.22,.68,0,1.08);
+}
+
+.oferta-card.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }

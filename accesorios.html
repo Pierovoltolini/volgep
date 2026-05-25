@@ -99,8 +99,21 @@
             --ink: #2c3f34;
         }
 
+        /* Evitar overflow horizontal en toda la página */
+        body.accesorios {
+            overflow-x: hidden;
+        }
+
         body.accesorios main {
             padding-top: 1.2rem;
+            overflow-x: hidden;
+        }
+
+        /* Imágenes y video siempre dentro del contenedor */
+        body.accesorios img,
+        body.accesorios video {
+            max-width: 100%;
+            height: auto;
         }
 
         .container-narrow {
@@ -150,15 +163,10 @@
         .cards-2 {
             display: grid;
             gap: var(--gap);
-            grid-template-columns: repeat(2,minmax(260px,1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        @media (max-width: 860px) {
-            .cards-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 420px) {
+        @media (max-width: 540px) {
             .cards-2 {
                 grid-template-columns: 1fr;
             }
@@ -316,6 +324,7 @@
                 <img src="img/logo.png" alt="VolGep" width="140" height="40" />
             </a>
             <nav class="nav" aria-label="Navegación principal">
+                <button class="nav__close" aria-label="Cerrar menú">✕</button>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="index.html#nosotros">Nosotros</a></li>
